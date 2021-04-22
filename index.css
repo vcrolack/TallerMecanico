@@ -99,7 +99,7 @@ body {
 }
 #main .dimensions-carousel {
   max-height: 50vh;
-  max-width: 60vw;
+  max-width: 90vw;
   
 
   display: flex;
@@ -143,7 +143,6 @@ body {
 }
 #footer .container-footer {
   background-color: #ffbb00ce;
-  height: 100px;
 }
 #footer .container-footer .information a {
   color: black;
