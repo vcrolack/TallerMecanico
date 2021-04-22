@@ -63,14 +63,30 @@ body {
 }
 
 .tarjeta {
- background-color: black; 
+ background-color: #282623; 
+ width: 100%;
 }
 
+.titulo-tarjetas {
+  color: #EEEEEE;
+}
 
+.card-text {
+  color: #EEEEEE;
+}
 
+.container-informacion {
+  width: 100px;
+  height: 200px;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+}
 
-
-
+.container-tarjeta {
+  width: 300px;
+  height: 500px;
+}
 
 
 
