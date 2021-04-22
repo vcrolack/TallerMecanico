@@ -17,15 +17,15 @@
     <header>
       <nav id="navbar-p"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a href=""><img src="./assets/logo-solido.svg" alt="" class="ms-3 me-3"></a>
+          <a href=""><img src="./assets/img/icon/logo-solido.svg" alt="" class="ms-3 me-3"></a>
           <a class="navbar-brand" href="#">
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <img src="./assets/toggle-button.svg" ></img>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+          <div class="collapse navbar-collapse bg-black" id="navbarNav">
+            <ul class="navbar-nav text-center">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="#">INICIO</a>
               </li>
@@ -42,7 +42,7 @@
                 <a class="nav-link" href="#"  >CONTACTO</a>
               </li>
               <li>
-                <button class="btn btn-registrate">Regístrate</button>
+                <button class="btn btn-registrate ms-5 me-4">Regístrate</button>
               </li>
               <li>
                 <button class="btn btn-inicie-sesion">Inicie sesión</button>
@@ -53,6 +53,89 @@
       </nav>
     </header>
     <!-- /HEADER -->
+    <!-- BUSQUEDA -->
+    <section class="main-input">
+      <div class="container-fluid container-busqueda d-flex justify-content-center mb-5">
+        <div class="row">
+          <div class="col-12 col-lg">
+            <div class="barra-busqueda mt-4">
+                <input id="search-id" type="text" class="input-search" name="search-id" placeholder="Escriba lo que desee buscar..."/>
+              </div>
+            </div>
+            <div class="col-12 col-lg">
+            <button type="submit" class="btn btn-search d-flex align-items-center justify-content-center mt-5">
+              <img src="./assets/img/icon/search-icon.svg" class="search-icon"/> Buscar
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /BUSQUEDA -->
+    <!-- MAIN -->
+    <main id="main">
+      <div id="carouselExampleControls" class="carousel slide dimensions-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./assets/img/carrusel/foto1.jpeg" class="d-block w-100" alt="...">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 col-lg container-informacion-trabajo">
+                    <h3>TRABAJOS REALIZADOS</h3>
+                    <p>Tipo de trabajo: Cambio de pistones</p>
+                    <p>Mecánico: Oscar Martínez</p>
+                    <p>Vehículo: Mazda 4</p>
+                    <button class="btn btn-mas-info">Más información</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/img/carrusel/foto2.jpg" class="d-block w-100" alt="...">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-lg container-informacion-trabajo">
+                  <h3>TRABAJOS REALIZADOS</h3>
+                  <p>Tipo de trabajo: Limpieza de motor</p>
+                  <p>Mecánico: Jorge Moforte</p>
+                  <p>Vehículo: Kia Río</p>
+                  <button class="btn btn-mas-info">Más información</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/assets/img/carrusel/foto3.jpg" class="d-block w-100" alt="...">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-lg container-informacion-trabajo">
+                  <h3>TRABAJOS REALIZADOS</h3>
+                  <p>Tipo de trabajo: Cambio de pistones</p>
+                  <p>Mecánico: Oscar Martínez</p>
+                  <p>Vehículo: Mazda 4</p>
+                  <button class="btn btn-mas-info">Más información</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <img src="./assets/flecha-prev.svg" class="carousel-control-prev-icono" aria-hidden="true">
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <img src="./assets/flecha-next.svg" class="carousel-control-next-icono" aria-hidden="true">
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </main>
+    <!-- /MAIN -->
+
+
+
+
+
+
+
     <!-- FOOTER -->
     <footer id="footer">
       <div class="container-fluid container-footer">
@@ -73,7 +156,7 @@
             <a href="#">Términos y condiciones</a>
           </div>
           <div class="col-12 col-lg offset-lg-6 mt-3 pe-3">
-            <a href="" class=""><img src="/assets/logo.svg" class="logo-inferior"alt=""></a>
+            <a href="" class=""><img src="/assets/img/icon/logo.svg" class="logo-inferior"alt=""></a>
           </div>
         </div>
       </div>
