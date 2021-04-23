@@ -52,7 +52,7 @@ body {
 -moz-box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
 }
 .btn-actions {
-  width: 50%;
+  width: 100%;
 }
 .bg-black {
   background-color: #282623 !important;
@@ -187,6 +187,9 @@ body {
     font-size: 2.5rem;
     margin-left: 10px;
     color: #CACACA;
+  }
+  .btn-actions {
+    width: 80%;
   }
 
   #main .dimensions-carousel {

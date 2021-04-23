@@ -14,17 +14,17 @@
   <body>
     <!-- HEADER -->
     <header>
-      <nav id="navbar-p"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light">
+      <nav id="navbar"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a href=""><img src="../assets/img/icon/logo-solido.svg" alt="" class="ms-3 me-3"></a>
+          <a href=""><img src="../../assets/img/icon/logo-solido.svg" alt="" class=" logo"></a>
           <a class="navbar-brand" href="#">
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="./assets/toggle-button.svg" ></img>
+          <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="../../assets/toggle-button.svg" ></img>
           </button>
           <div class="collapse navbar-collapse bg-black" id="navbarNav">
-            <ul class="navbar-nav text-center">
+            <ul class="navbar-nav text-center d-flex align-items-center">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="#">INICIO</a>
               </li>
@@ -35,28 +35,39 @@
                 <a class="nav-link" href="#">MECÁNICOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"  >TRABAJOS REALIZADOS</a>
+                <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"  >CONTACTO</a>
+                <a class="nav-link" href="#">CONTACTO</a>
               </li>
-              <div class="btn-actions mb-5 d-flex justify-content-center">
-                <button class="btn btn-registrate ms-5 me-4">Regístrate</button>
-                <button class="btn btn-inicie-sesion d-inline">Inicie sesión</button>
-              </div>
-              
             </ul>
+            <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-lg-end justify-content-center align-items-end">
+              <button class="btn btn-registrate ms-5 me-4">Regístrate</button>
+              <button class="btn btn-inicie-sesion">Inicie sesión</button>
+            </div>
           </div>
         </div>
       </nav>
     </header>
     <!-- /HEADER -->
+    <!-- QUIENES SOMOS -->
     <main id="Main-QuienesSomos"> 
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="../assets/img/quienesSomos.jpg" class="d-block w-100" alt="...">
+      <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner carrusel">
+          <div class="carousel-item active ">
+            <img src="../../assets/img/quienesSomos.jpg" class="\" alt="..."/>
+          </div>
+          <div class="overlay">
+            <div class="container d-flex justify-content-end">
+              <div class="row align-items-center">
+                <div class="col-md-6 offset-md-6 text-center text-md-end container-descripcion">
+                  <div class="descripcion-quienes-somos">
+                    <h3 class="d-md-block mt-4">Somos especialistas en el mantenimiento integral del automóvil, por ello realizamos todo tipo de servicios a tu vehículo, preocupándonos desde la mecánica general de tu vehículo, hasta su misma estética.</h3>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </main>
@@ -64,70 +75,75 @@
       <div class="container">
         <div class="row">
           <div class="col text-center text-uppercase">
-            <small class="small-conoce">Conoce a nuestro</small>
+            <small class="small-conoce">Conoce nuestros</small>
             <h2 class="titulo-servicios">SERVICIOS</h2>
           </div>
         </div>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-md-6">
-          <div class="col-md-4 mb-4 d-flex justify-content-center container-tarjeta">
-            <div class="card tarjeta">
-              <img src="../assets/img/icon/herramientas.svg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h2 class="titulo-tarjetas text-center">Mecánica</h2>
-                <div class="container-informacion">
+        <div class="row  row-cols-2 row-cols-sm-2 row-cols-lg-3 row-cols-md-6">
+          <div class="col-md-4  offset-lg-1 mb-4 d-flex justify-content-center container-tarjeta">
+            <div class="card tarjeta tarjeta-shadow-left">
+              <div class="container-icon my-5 ">
+                <img src="../../assets/img/icon/herramientas.svg" class="card-img-top" alt="...">
+              </div>
+              <h2 class="titulo-tarjetas text-center">Mecánica<br></br></h2>
+              <div class="card-body d-flex justify-content-center">
+                <div class="container-informacion d-flex justify-content-center">
                   <p class="card-text">El correcto funcionamiento de tu vehículo es nuestro objetivo, por lo que contamos con una gran variedad de servicios en mecánica express, general y mayor van desde alineación de ruedas hasta reparaciones de motor.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4 mb-4 d-flex justify-content-center container-tarjeta">
-            <div class="card tarjeta">
-              <img src="../assets/img/icon/auto.svg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h2 class="titulo-tarjetas text-center">Estética <br>automotriz</br></h2>
-                <div class="container-informacion">
+          <div class="col-md-4 offset-lg-1 mb-4 d-flex justify-content-center container-tarjeta">
+            <div class="card tarjeta tarjeta-shadow-center">
+              <div class="container-icon my-5">
+                <img src="../../assets/img/icon/auto.svg" class="card-img-top" alt="...">
+              </div>
+              <h2 class="titulo-tarjetas text-center">Estética <br>automotriz</br></h2>
+              <div class="card-body d-flex justify-content-center">
+                <div class="container-informacion d-flex justify-content-center">
                   <p class="card-text">Un automóvil con buen rendimiento y un correcto funcionamiento es bueno, pero que tenga una excelente imagen es mucho mejor. En <strong>El Rayo McQueen</strong> nos encargamos del lavado de interiores y exteriores, pulido y encerado y hasta lavado de motor.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-4 mb-4 d-flex justify-content-center container-tarjeta">
-            <div class="card tarjeta">
-              <img src="../assets/img/icon/rayo.svg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h2 class="titulo-tarjetas text-center">Electricidad automotriz</h2>
+          <div class="col-md-4 offset-lg-1 mb-4 d-flex justify-content-center container-tarjeta">
+            <div class="card tarjeta tarjeta-shadow-right">
+              <div class="container-icon my-5">
+                <img src="../../assets/img/icon/rayo.svg" class="card-img-top" alt="...">
               </div>
-              <div class="container-informacion d-flex justify-content-center"> 
-                  <p class="card-text">Es de sumamente importancia que el sistema eléctrico de tu vehículo esté siempre en buen estado, por eso, nos ocupamos de diagnosticar fallos y hacer reemplazo de las partes necesarias para que tu auto funcione a su mejor nivel.</p>
-                </div>
+              <h2 class="titulo-tarjetas text-center">Electricidad <br> automotriz</br></h2>
+              <div class="card-body d-flex justify-content-center">
+                <div class="container-informacion d-flex justify-content-center"> 
+                    <p class="card-text">Es de sumamente importancia que el sistema eléctrico de tu vehículo esté siempre en buen estado, por eso, nos ocupamos de diagnosticar fallos y hacer reemplazo de las partes necesarias para que tu auto funcione a su mejor nivel.</p>
                 </div>
               </div>
-            </div>
+            </div>  
           </div>
         </div>
       </div>
     </section>
+    <!-- /QUIENES SOMOS -->
     <!-- FOOTER -->
     <footer id="footer">
       <div class="container-fluid container-footer">
         <div class="row information">
-          <div class="col-12 col-lg-1 mt-5 ms-3">
+          <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">¿Quiénes somos?</a>
           </div>
-          <div class="col-12 col-lg-1 mt-5">
+          <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Mecánicos</a>
           </div>
-          <div class="col-12 col-lg-1 mt-5">
+          <div class="col-12 col-lg-1 text-center  mt-5">
             <a href="#">Trabajos realizados</a>
           </div>
-          <div class="col-12 col-lg-1 mt-5">
+          <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Contacto</a>
           </div>
-          <div class="col-12 col-lg-1 mt-5">
+          <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Términos y condiciones</a>
           </div>
-          <div class="col-12 col-lg offset-lg-6 mt-3 pe-3">
-            <a href="" class=""><img src="../assets/img/icon/logo.svg" class="logo-inferior"alt=""></a>
+          <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
+            <a href="" class=""><img src="/assets/img/icon/logo.svg" class="logo-inferior"alt=""></a>
           </div>
         </div>
       </div>
