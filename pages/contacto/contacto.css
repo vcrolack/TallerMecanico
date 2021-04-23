@@ -1,0 +1,122 @@
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family: 'Roboto', sans-serif;
+}
+html {
+font-size: 62.5%;
+
+}
+body {
+background-color: #201E1C;
+}
+.navbar {
+background-color: #282623 !important;
+height: 120px;
+}
+.navbar h1 {
+font-size: 3.5rem;
+color: #CACACA;
+}
+.nav-item a{
+color: #CACACA !important;
+font-size: 1.8rem;
+margin-right: 13px;
+}
+.nav-item a:hover {
+color: white !important;
+text-decoration: underline white;
+}
+.btn-registrate {
+background-color: #FFBC0A !important;
+font-size: 20px;
+color: #282623;
+height: 50px;
+width: 180px;
+border-radius: 6px;
+box-shadow: 10px 10px 8px 0px rgba(255,188,10,0.38);
+-webkit-box-shadow: 10px 10px 8px 0px rgba(255,188,10,0.38);
+-moz-box-shadow: 10px 10px 8px 0px rgba(255,188,10,0.38);
+}
+.btn-inicie-sesion {
+background-color: #A7A7A7;
+font-size: 20px;
+color: #282623;
+height: 50px;
+width: 180px;
+border-radius: 6px;
+box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
+-webkit-box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
+-moz-box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footer {
+margin-top: 200px;
+}
+#footer .container-footer {
+background-color: #ffbb00ce;
+}
+#footer .container-footer .information a {
+color: black;
+text-decoration: none;
+font-size: 1.8rem;
+}
+#footer .container-footer .information a:hover {
+color: black;
+text-decoration: underline black;
+font-size: 1.8rem;
+}
+.logo-inferior {
+height: 80px;
+}
+.foot {
+height: 10px;
+background-color: #282623;
+}
