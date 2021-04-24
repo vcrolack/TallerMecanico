@@ -30,6 +30,7 @@ body {
   text-decoration: underline white;
 }
 .btn-registrate {
+  margin-right: 20px;
   background-color: #FFBC0A !important;
   font-size: 20px;
   color: #282623;
@@ -63,6 +64,9 @@ body {
 }
 .titulo .resalte-titulo {
   color: #FFBC0A;
+}
+#main {
+  margin-top: 100px;
 }
 
 #main .carousel-inner img {
@@ -174,5 +178,25 @@ body {
     font-size: 2.5rem;
     margin-left: 10px;
     color: #CACACA;
+  }
+}
+@media (max-width: 340px) {
+  header .logo {
+    margin-right: 0;
+  }
+  .navbar h1 {
+    font-size: 1.5rem;
+    
+    color: #CACACA;
+  }
+  .nav-item a {
+    margin-right: 0;
+  }
+  .btn-inicie-sesion, .btn-registrate {
+    width: 50%;
+  }
+
+  #footer{
+    margin-top: 200px;
   }
 }

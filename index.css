@@ -30,7 +30,7 @@ body {
   text-decoration: underline white;
 }
 .btn-registrate {
-  margin-right: 20px;
+
   background-color: #FFBC0A !important;
   font-size: 20px;
   color: #282623;
@@ -54,13 +54,14 @@ body {
 }
 .btn-actions {
   width: 100%;
+
 }
 .bg-black {
   background-color: #282623 !important;
 }
 .main-input .container-busqueda {
   background-color: #211E1C;
-  margin-top: 40px;
+  margin-top: 200px;
 }
 .main-input .input-search {
   margin-bottom: 10px;
@@ -182,9 +183,7 @@ width: 100px;
     margin-left: 10px;
     color: #CACACA;
   }
-  .btn-actions {
-    width: 80%;
-  }
+
 
   #main .dimensions-carousel {
     max-height: 20vh;
@@ -236,7 +235,7 @@ width: 100px;
   }
 
 }
-@media (max-width: 320px) {
+@media (max-width: 346px) {
   header .logo {
     margin-right: 0;
   }
@@ -244,6 +243,12 @@ width: 100px;
     font-size: 1.5rem;
     
     color: #CACACA;
+  }
+  .btn-registrate, .btn-inicie-sesion {
+    width: 50%;
+  }
+  .nav-item a {
+    margin-right: 0;
   }
   .container-titulo h1 {
     font-size: 3.5rem;

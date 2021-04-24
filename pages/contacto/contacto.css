@@ -51,6 +51,7 @@ background-color: #201E1C;
 -webkit-box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
 -moz-box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
 }
+
 .btn-actions {
   width: 100%;
 }
@@ -61,6 +62,9 @@ background-color: #201E1C;
 .titulo h1 {
   font-size: 5rem;
   color: #EEEEEE;
+}
+#main {
+  margin-top: 100px;
 }
 .titulo .resalte-titulo {
   color: #FFBC0A;
@@ -226,5 +230,32 @@ background-color: #282623;
   .titulo-container {
     display: flex;
     justify-content: center;
+  }
+}
+@media (max-width: 400px) {
+  .navbar h1 {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    color: #CACACA;
+  }
+}
+@media (max-width: 340px) {
+  header .logo {
+    margin-right: 0;
+  }
+  .btn-inicie-sesion, .btn-registrate {
+    width: 50%;
+  }
+  .navbar h1 {
+    font-size: 1.5rem;
+    
+    color: #CACACA;
+  }
+  .nav-item a {
+    margin-right: 0;
+  }
+
+  #footer{
+    margin-top: 200px;
   }
 }
