@@ -44,7 +44,7 @@
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-lg-end justify-content-center align-items-end">
-              <button class="btn btn-registrate ms-5 me-4">Regístrate</button>
+              <button class="btn btn-registrate ">Regístrate</button>
               <button class="btn btn-inicie-sesion">Inicie sesión</button>
             </div>
           </div>
@@ -73,44 +73,47 @@
       </div>
     </section>
     <!-- /BUSQUEDA -->
+    <!-- TITULO MAIN -->
+    <div class="container container-titulo">
+      <h1>TRABAJOS DESTACADOS</h1>
+    </div>
+    <!-- /TITULO MAIN -->
     <!-- MAIN -->
     <main id="main">
-      <div id="carouselExampleControls" class="carousel slide dimensions-carousel" data-bs-ride="carousel">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-pause= "hover">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="./assets/img/carrusel/foto1.jpg" class="" alt="...">
-              <div class="container">
-                <div class="row">
-                  <div class="col-12 col-lg container-informacion-trabajo">
-                    <h3>TRABAJOS REALIZADOS</h3>
-                    <p>Tipo de trabajo: Cambio de pistones</p>
-                    <p>Mecánico: Oscar Martínez</p>
-                    <p>Vehículo: Mazda 4</p>
-                    <button class="btn btn-mas-info">Más información</button>
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="carousel-item">
-            <img src="/assets/img/carrusel/foto2.jpg" class="" alt="...">
-            <div class="container">
+            <div class="container mt-5">
               <div class="row">
                 <div class="col-12 col-lg container-informacion-trabajo">
-                  <h3>TRABAJOS REALIZADOS</h3>
-                  <p>Tipo de trabajo: Limpieza de motor</p>
-                  <p>Mecánico: Jorge Moforte</p>
-                  <p>Vehículo: Kia Río</p>
+                  
+                  <p>Tipo de trabajo: Alineación de chasís</p>
+                  <p>Mecánico: Tomás Faúndez</p>
+                  <p>Vehículo: Toyota Yaris</p>
                   <button class="btn btn-mas-info">Más información</button>
                 </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="/assets/img/carrusel/foto3.jpg" class="" alt="...">
-            <div class="container">
+            <img src="./assets/img/carrusel/foto2.jpg" class="" alt="...">
+            <div class="container mt-5">
               <div class="row">
                 <div class="col-12 col-lg container-informacion-trabajo">
-                  <h3>TRABAJOS REALIZADOS</h3>
+                  <p>Tipo de trabajo: Alineación de chasís</p>
+                  <p>Mecánico: Tomás Faúndez</p>
+                  <p>Vehículo: Toyota Yaris</p>
+                  <button class="btn btn-mas-info">Más información</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="./assets/img/carrusel/foto3.jpg" class="" alt="...">
+            <div class="container mt-5">
+              <div class="row ">
+                <div class="col-12 col-lg container-informacion-trabajo">
                   <p>Tipo de trabajo: Alineación de chasís</p>
                   <p>Mecánico: Tomás Faúndez</p>
                   <p>Vehículo: Toyota Yaris</p>
@@ -120,19 +123,16 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="btn-carrusel-prev">
-        <button class="carousel-control-prev ms-5 ps-3 position-absolute" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <img src="./assets/flecha-prev.svg" class="carousel-control-prev-icono" aria-hidden="true">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <div class="btn-carrusel-next">
-          <button class="carousel-control-next me-5 pe-3 position-absolute" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <img src="./assets/flecha-next.svg" class="carousel-control-next-icono" aria-hidden="true">
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
+      
     </main>
     <!-- /MAIN -->
     <!-- FOOTER -->
