@@ -258,7 +258,7 @@ body {
   }
 
 }
-@media (max-width: 340px) {
+@media (max-width: 600px) {
   header .logo {
     margin-right: 0;
   }
@@ -273,7 +273,9 @@ body {
   .btn-inicie-sesion, .btn-registrate {
     width: 50%;
   }
-
+  #Main-QuienesSomos {
+    margin-top: 100px;
+  }
 
   #footer{
     margin-top: 200px;
