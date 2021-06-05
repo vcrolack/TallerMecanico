@@ -12,7 +12,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/index.css">
     <script>
-      
+      $(document).ready(
+        function () {
+          $("#msj-error").hide();
+          if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(obtenerPosicion);
+          } else {
+            $("#msj-error").show();
+            $("#msj-error").append(
+              `<p1>No se ha podido encontrar tu ubicación</p>`
+            )
+          }
+          function obtenerPosicion (position) {
+            var latitud = position.coords.latitude;
+            var longitud = position.coords.longitude;
+            console.log(latitud, longitud);
+
+            var url = `https://www.metaweather.com/api/location/search/?lattlong=${latitud},${longitud}`;
+            $.get(url, function (data) {
+              var nombreLugar = data[0].title;
+              var whereOnEarthId = data[0].woeid;
+              var urlTemp = `https://www.metaweather.com/api/location/${whereOnEarthId}/`;
+
+              $.get(urlTemp, function (data) {
+                var tiempoEnTuZona = data.consolidated_weather[1].the_temp.toFixed(2);
+                var nombreAbbrClima = data.consolidated_weather[1].weather_state_abbr;
+                
+                //ObtenerIcon(nombreAbbrClima);
+
+                $("#clima").append(`<p>${tiempoEnTuZona}&#8451;`)
+              })
+            })
+          function obtenerIcon (nombreAbbrClima) {
+            arrClima = ['sn', 'sl', 'h', 't', 'hr', 'lr', 's', 'hc', 'lc', 'c'];
+            if (arrClima.includes(nombreAbbrClima)) {
+              const url = `https://www.metaweather.com/static/img/weather/${nombreAbbrClima}.svg`;
+              //implementar icono
+            }
+          }
+          }
+        }
+      )
     </script>
     <title>El Rayo McQueen</title>
   </head>
@@ -156,8 +196,9 @@
           <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Términos y condiciones</a>
           </div>
-          <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
-            <a href="" class=""><img src="/assets/img/icon/logo.svg" class="logo-inferior"alt=""></a>
+          <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3 container-clima" id="clima">
+            
+            <div id="msj-error" class="container alert red-alert"></div>
           </div>
         </div>
       </div>
