@@ -26,7 +26,6 @@
           function obtenerPosicion (position) {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
-            console.log(latitud, longitud);
 
             var url = `https://www.metaweather.com/api/location/search/?lattlong=${latitud},${longitud}`;
             $.get(url, function (data) {
@@ -35,12 +34,24 @@
               var urlTemp = `https://www.metaweather.com/api/location/${whereOnEarthId}/`;
 
               $.get(urlTemp, function (data) {
-                var tiempoEnTuZona = data.consolidated_weather[1].the_temp.toFixed(2);
+                var tiempoEnTuZona = data.consolidated_weather[1].the_temp.toFixed(1);
                 var nombreAbbrClima = data.consolidated_weather[1].weather_state_abbr;
+                var nombreClima = data.consolidated_weather[1].weather_state_name;
                 
-                //ObtenerIcon(nombreAbbrClima);
+                obtenerIcon(nombreAbbrClima);
 
-                $("#clima").append(`<p>${tiempoEnTuZona}&#8451;`)
+                $("#temp").append(`<p>${tiempoEnTuZona}&#8451;</p>`)
+
+                //traducir nombre-clima
+                const arrNombresClima = ["Snow", "Sleet", "Hail", "Thunderstorm", "Heavy Rain", "Light Rain", "Showers", "Heavy Cloud", "Light Cloud", "Clear"];
+                const arrNombreClimaEs = ["nieve", "Aguanieve", "Granizo", "Tormenta", "Lluvia pesada", "Lluvia ligera", "Chubascos", "Nubes pesadas", "Nublado","Despejado"];
+
+                if (arrNombresClima.includes(nombreClima)) {
+                  const indiceNombreEn = arrNombresClima.indexOf(nombreClima);
+                  const nombreClimaEs = arrNombreClimaEs[indiceNombreEn]; 
+                  $("#climaNombre").append(`<p>${nombreClimaEs}</p>`);
+                }
+
               })
             })
           function obtenerIcon (nombreAbbrClima) {
@@ -48,6 +59,7 @@
             if (arrClima.includes(nombreAbbrClima)) {
               const url = `https://www.metaweather.com/static/img/weather/${nombreAbbrClima}.svg`;
               //implementar icono
+              $("#icon").append(`<img src="${url}" class="img-icon"/>`);
             }
           }
           }
@@ -197,7 +209,11 @@
             <a href="#">Términos y condiciones</a>
           </div>
           <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3 container-clima" id="clima">
-            
+            <div class="icon-clima" id="icon"></div>
+            <div class="container-info-clima">
+              <div class="temperatura" id="temp"></div>
+              <div class="nombre-clima" id="climaNombre"></div>
+            </div>
             <div id="msj-error" class="container alert red-alert"></div>
           </div>
         </div>
