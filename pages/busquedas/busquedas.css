@@ -113,3 +113,16 @@ body {
   height: 10px;
   background-color: #282623;
 }
+
+.tabla {
+  height: 300px;
+  width: 50%;
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-size: large;
+  font-style: inherit;
+}
