@@ -16,7 +16,7 @@
         $("#enviarInformacion").click(
           function () {
             if ($("#criterioBusqueda").val() === "selecciona-criterio"){
-              arrojarError(1)
+              arrojarError(1);
             } else {
               msjError = ''
               $("#msj-error").hide();
@@ -25,7 +25,7 @@
                 //BUSCAR POR MARCA
                 url = `https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`;
                 if ( $("#search-id").val().trim().length === 0) {
-                  arrojarError(2)
+                  arrojarError(2);
                 }
 
                 $.get(url, function (data) {
@@ -41,12 +41,24 @@
               if (llave) {
                 console.log("ostiass")
               } else if (llave === false) {
-                arrojarError(3)
+                arrojarError(3);
               }
             })
           } else if ( $("#criterioBusqueda").val() === "modelo") {
             //BUSCAR POR MODELO
-            
+            if ( $("#search-id").val().trim().length === 0) {
+              arrojarError(2);
+            } else {
+              var marcaRecibida = $("#search-id").val().trim().toUpperCase();
+              var urlModelo = `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${marcaRecibida}?format=json`;
+              $.get(urlModelo, function (data) {
+
+                for (var i = 0; i < data.Results.length; i++) {
+                  console.log(data.Results[i].Make_Name, data.Results[i].Model_Name)
+                }
+
+              })
+            }
           }
 
         }
@@ -144,6 +156,11 @@
               <div class="container alert alert-danger" id="msj-error">
               </div>
             </div>  
+        </div>
+        <div class="tabla">
+
+
+          
         </div>
       </div>
     </section>
