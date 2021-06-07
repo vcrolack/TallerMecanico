@@ -14,10 +14,17 @@
 
         $("#msj-error").hide();
         $("#search-id-modelo").hide();
+        $("#search-id-annio").hide();
 
         $("#criterioBusqueda").click(function () {
           if ($("#criterioBusqueda").val() === "modelo") {
             $("#search-id-modelo").slideToggle();
+          }
+        })
+
+        $("#criterioBusqueda").click(function () {
+          if ( $("#criterioBusqueda").val() === "annio") {
+            $("#search-id-annio").slideToggle();
           }
         })
 
@@ -59,12 +66,13 @@
               }
             })
           } else if ( $("#criterioBusqueda").val() === "modelo") {
-            //BUSCAR POR MODELO
-            if ( $("#search-id").val().trim().length === 0) {
+            //BUSCAR POR MODELO Y MARCA
+            if ( $("#search-id").val().trim().length === 0 || $("#search-id-modelo").val().trim().length === 0) {
               arrojarError(2);
             } else {
               var marcaRecibida = $("#search-id").val().trim().toUpperCase();
               var modeloRecibido = $("#search-id-modelo").val().trim().toUpperCase();
+              var llaveModelo = false
               
               var urlModelo = `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${marcaRecibida}?format=json`;
               $.get(urlModelo, function (data) {
@@ -72,13 +80,37 @@
                   if (data.Results[i].Model_Name.trim().toUpperCase() === modeloRecibido) {
                     //pintar la tablita, mostrar id modelo, marca, nombre modelo, annio
                     console.log(modeloRecibido, "ostiassss")
+                    llaveModelo = true
                   }
                 }
+                if (llaveModelo) {
+                  console.log("ostiasss, encontraste tu auto");
+                } else {
+                  arrojarError(3);
+                }
+              })
+            }
+          } else if ( $("#criterioBusqueda").val() === "annio") {
+            //BUSCAR POR MARCA Y AÑO
+            if ( $("#search-id").val().trim().length === 0 || $("#search-id-annio").val().trim().length === 0) {
+              arrojarError(2);
+            } else {
+              var marcaRecibida = $("#search-id").val().trim().toUpperCase();
+              var annioRecibido = $("#search-id-annio").val().trim().toUpperCase();
+              var llaveAnnio = false;
 
+              var urlMarcaAnnio = `https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformakeyear/make/${marcaRecibida}/modelyear/${annioRecibido}?format=json`;
+
+              $.get(urlMarcaAnnio, function (data) {
+                for (var i = 0; i < data.Results.length; i++) {
+                  if (data.Results[i].Make_Name.trim().toUpperCase() === marcaRecibida) {
+                    //pintar en la tabla id modelo, nombre marca, nombre modelo, annio
+                    console.log(data.Results[i].Make_Name)
+                  }
+                }
               })
             }
           }
-
         }
       }
     )
@@ -168,6 +200,9 @@
               </div>
               <div class="barra-busqueda-modelo mt-4">
                 <input id="search-id-modelo" type="text" class="input-search" name="search-id" placeholder="Escriba el modelo"/>
+              </div>
+              <div class="barra-busqueda-modelo mt-4">
+                <input id="search-id-annio" type="text" class="input-search" name="search-id" placeholder="Escriba el año"/>
               </div>
               <div class="container-fluid d-flex justify-content-center">
                 <button type="submit" class="btn btn-search d-flex align-items-center justify-content-center mt-5" id="enviarInformacion">
