@@ -11,7 +11,21 @@
     <link rel="stylesheet" href="./busquedas.css">
     <script>
       $(document).ready(function () {
+
         $("#msj-error").hide();
+        $("#search-id-modelo").hide();
+
+        $("#criterioBusqueda").click(function () {
+          if ($("#criterioBusqueda").val() === "modelo") {
+            $("#search-id-modelo").slideToggle();
+          }
+        })
+
+        $("#search-id-modelo").submit(function () {
+          if ($("#criterioBusqueda").val() === "modelo") {
+            $("#search-id-modelo").slideToggle();
+          }
+        })
         
         $("#enviarInformacion").click(
           function () {
@@ -50,11 +64,15 @@
               arrojarError(2);
             } else {
               var marcaRecibida = $("#search-id").val().trim().toUpperCase();
+              var modeloRecibido = $("#search-id-modelo").val().trim().toUpperCase();
+              
               var urlModelo = `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${marcaRecibida}?format=json`;
               $.get(urlModelo, function (data) {
-
                 for (var i = 0; i < data.Results.length; i++) {
-                  console.log(data.Results[i].Make_Name, data.Results[i].Model_Name)
+                  if (data.Results[i].Model_Name.trim().toUpperCase() === modeloRecibido) {
+                    //pintar la tablita, mostrar id modelo, marca, nombre modelo, annio
+                    console.log(modeloRecibido, "ostiassss")
+                  }
                 }
 
               })
@@ -146,7 +164,10 @@
               </select>
             </div>
             <div class="barra-busqueda mt-4">
-                <input id="search-id" type="text" class="input-search" name="search-id" placeholder="Escriba lo que desee buscar..."/>
+                <input id="search-id" type="text" class="input-search" name="search-id" placeholder="Escriba la marca"/>
+              </div>
+              <div class="barra-busqueda-modelo mt-4">
+                <input id="search-id-modelo" type="text" class="input-search" name="search-id" placeholder="Escriba el modelo"/>
               </div>
               <div class="container-fluid d-flex justify-content-center">
                 <button type="submit" class="btn btn-search d-flex align-items-center justify-content-center mt-5" id="enviarInformacion">
