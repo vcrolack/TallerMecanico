@@ -11,10 +11,13 @@
     <link rel="stylesheet" href="./busquedas.css">
     <script>
       $(document).ready(function () {
-
         $("#msj-error").hide();
         $("#search-id-modelo").hide();
         $("#search-id-annio").hide();
+        $("#tabla-marca").hide();
+        $("#tabla-modelo").hide();
+        $("#tabla-annio").hide();
+        $("#tabla-manufactura").hide();
 
         $("#criterioBusqueda").click(function () {
           if ($("#criterioBusqueda").val() === "modelo") {
@@ -34,8 +37,18 @@
           }
         })
         
-        $("#enviarInformacion").click(
+        $("#enviarInformacion").click(   
           function () {
+            $("#informacion-tabla-marca > tbody").empty();
+            $("#informacion-tabla-modelo > tbody").empty();
+            $("#informacion-tabla-annio > tbody").empty();
+            $("#informacion-tabla-manufactura > tbody").empty();
+            $("#informacion-tabla-marca > thead").empty();
+            $("#informacion-tabla-modelo > thead").empty();
+            $("#informacion-tabla-annio > thead").empty();
+            $("#informacion-tabla-manufactura > thead").empty();
+            $("#msj-error > p").empty();
+            //$("#tablas table").remove();
             if ($("#criterioBusqueda").val() === "selecciona-criterio"){
               arrojarError(1);
             } else {
@@ -44,26 +57,39 @@
 
               if ( $("#criterioBusqueda").val() === "marca" ) {
                 //BUSCAR POR MARCA
-                url = `https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json`;
+                
                 if ( $("#search-id").val().trim().length === 0) {
                   arrojarError(2);
                 }
-
-                $.get(url, function (data) {
                 const nombreRecibido = $("#search-id").val().toUpperCase();
-                var llave = false
-                for (var i = 0; i < data.Results.length; i++) {
-                  //console.log(data.Results[i].Make_Name) 
-                  if (data.Results[i].Make_Name === nombreRecibido) {
-                    llave = true
-                    break
-                }
-              }
-              if (llave) {
-                console.log("ostiass")
-              } else if (llave === false) {
-                arrojarError(3);
-              }
+                const url = `https://vpic.nhtsa.dot.gov/api/vehicles/GetVehicleTypesForMake/${nombreRecibido}?format=json`;  
+                $.get(url, function (data) {
+                  $("#tabla-marca").show();
+                  $("#informacion-tabla-marca").append(
+                    `<thead>
+                    <tr>
+              
+                      <th scope="col"> ID Modelo de Vehículo </th>
+      
+                      <th scope="col"> Marca </th>
+              
+                      <th scope="col"> Tipo de vehículo </th>
+              
+                    </tr>
+                    </thead>`
+                  )
+                  for (var i = 0; i < data.Results.length; i++) {
+                    $("#informacion-tabla-marca").append(
+                    `   
+                    <tbody>
+                    <tr class="table table-striped">
+                      <th> ${data.Results[i].MakeId}</th>
+                      <th> ${data.Results[i].MakeName}</th>
+                      <th> ${data.Results[i].VehicleTypeName}</th>
+                    </tr>
+                    </tbody>`
+                    )
+                  }
             })
           } else if ( $("#criterioBusqueda").val() === "modelo") {
             //BUSCAR POR MODELO Y MARCA
@@ -73,18 +99,47 @@
               var marcaRecibida = $("#search-id").val().trim().toUpperCase();
               var modeloRecibido = $("#search-id-modelo").val().trim().toUpperCase();
               var llaveModelo = false
+              var idModelo;
+              var nombreModelo;
+              var nombreMarca;
               
               var urlModelo = `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMake/${marcaRecibida}?format=json`;
               $.get(urlModelo, function (data) {
+                $("#informacion-tabla-modelo").append(
+                  `
+                  <thead>
+                      <tr>
+              
+                      <th scope="col"> ID Modelo de Vehículo </th>
+      
+                      <th scope="col"> Nombre modelo </th>
+              
+                      <th scope="col"> Marca </th>
+                      </tr>
+                    </thead>
+                  `
+                )
                 for (var i = 0; i < data.Results.length; i++) {
                   if (data.Results[i].Model_Name.trim().toUpperCase() === modeloRecibido) {
                     //pintar la tablita, mostrar id modelo, marca, nombre modelo, annio
-                    console.log(modeloRecibido, "ostiassss")
+                    idModelo = data.Results[i].Model_ID;
+                    nombreModelo = data.Results[i].Model_Name;
+                    nombreMarca = data.Results[i].Make_Name;
                     llaveModelo = true
                   }
                 }
                 if (llaveModelo) {
-                  console.log("ostiasss, encontraste tu auto");
+                  $("#tabla-modelo").show();
+                  $("#informacion-tabla-modelo").append(
+                    `
+                    <tbody>
+                    <tr>
+                      <th>${idModelo}</th>
+                      <th>${nombreModelo}</th>
+                      <th>${nombreMarca}</th>
+                    </tr>
+                    </tbody>`
+                  )
                 } else {
                   arrojarError(3);
                 }
@@ -98,19 +153,142 @@
               var marcaRecibida = $("#search-id").val().trim().toUpperCase();
               var annioRecibido = $("#search-id-annio").val().trim().toUpperCase();
               var llaveAnnio = false;
+              var idModelo;
+              var nombreModelo;
+              var nombreMarca;
 
               var urlMarcaAnnio = `https://vpic.nhtsa.dot.gov/api/vehicles/getmodelsformakeyear/make/${marcaRecibida}/modelyear/${annioRecibido}?format=json`;
 
               $.get(urlMarcaAnnio, function (data) {
+                $("#informacion-tabla-annio").append(
+                  `
+                  <thead>
+                        <tr>
+                      
+                          <th scope="col"> ID Modelo de Vehículo </th>
+              
+                          <th scope="col"> Marca </th>
+                      
+                          <th scope="col"> Nombre modelo </th>
+                      
+                          <th scope="col"> Año </th>
+                      
+                        </tr>
+                      </thead>
+                      `
+                )
                 for (var i = 0; i < data.Results.length; i++) {
                   if (data.Results[i].Make_Name.trim().toUpperCase() === marcaRecibida) {
                     //pintar en la tabla id modelo, nombre marca, nombre modelo, annio
-                    console.log(data.Results[i].Make_Name)
+                    idModelo = data.Results[i].Model_ID;
+                    nombreModelo = data.Results[i].Model_Name;
+                    nombreMarca = data.Results[i].Make_Name;
+                    llaveAnnio = true
+                    $("#tabla-annio").show();
+                    $("#informacion-tabla-annio").append(
+                      `
+                      <tbody>
+                      <tr>
+                        <th>${idModelo}</th>
+                        <th>${nombreMarca}</th>
+                        <th>${nombreModelo}</th>
+                        <th>${annioRecibido}</th>
+                    </tr>
+                    </tbody>`
+                    )
                   }
                 }
+                if (llaveAnnio) {
+                  console.log("loaded");
+                } else {
+                  arrojarError(3)
+                }
               })
+            } 
+          }else if ($("#criterioBusqueda").val() === "manufacturador") {
+            if ( $("#search-id").val().trim().length === 0) {
+              arrojarError(2);
+            } else {
+              var marcaRecibida = $("#search-id").val().trim().toUpperCase();
+              var llaveManufactura = false
+              var nombreMarca
+              var direccion1;
+              var direccion2;
+              var ciudad;
+              var nombreManufacturadora;
+              var pais;
+              var codigoPostal;
+              var personajePrincipal;
+
+              const urlManufacturadora = `https://vpic.nhtsa.dot.gov/api/vehicles/getmanufacturerdetails/${marcaRecibida}?format=json`;
+
+              $.get(urlManufacturadora, function (data) {
+                //console.log(data.Results[0].Mfr_CommonName)
+                $("#informacion-tabla-manufactura").append (
+                  `
+                  <thead>
+                    <tr>
+                  
+                      <th scope="col"> Marca </th>
+          
+                      <th scope="col"> Nombre manufactura </th>
+                  
+                      <th scope="col"> Ciudad </th>
+                  
+                      <th scope="col"> País </th>
+
+                      <th scope="col"> Direccion </th>
+
+                      <th scope="col"> Direccion 2 </th>
+
+                      <th scope="col"> Código Postal </th>
+
+                      <th scope="col"> Gerente </th>
+                  
+                    </tr>
+                  </thead>
+                  `
+                ) 
+                
+                for (var i = 0; i < data.Results.length; i++) {
+                  console.log(data.Results[i].Address)
+                  nombreManufacturadora = data.Results[i].Mfr_Name;
+                  ciudad = data.Results[i].City;
+                  direccion1 = data.Results[i].Address;
+                  direccion2 = data.Results[i].Address2;
+                  pais = data.Results[i].Country;
+                  codigoPostal = data.Results[i].PostalCode;
+                  personajePrincipal = data.Results[i].PrincipalFirstName;
+                  nombreMarca = data.Results[0].Mfr_CommonName;
+                  llaveManufactura = true
+                  $("#tabla-manufactura").show();
+                  $("#informacion-tabla-manufactura").append(
+                    `
+                    <tbody>
+                      <tr>
+                        <th>${nombreMarca}</th>
+                        <th>${nombreManufacturadora}</th>
+                        <th>${ciudad}</th>
+                        <th>${pais}</th>
+                        <th>${direccion1}</th>
+                        <th>${direccion2}</th>
+                        <th>${codigoPostal}</th>
+                        <th>${personajePrincipal}</th>
+                      </tr>
+                    </tbody>
+                    `
+                  )
+                }
+                if (llaveManufactura) {
+                  console.log("Loaded...");
+                } else {
+                  arrojarError(3);
+                }
+              })
+              
             }
           }
+
         }
       }
     )
@@ -155,22 +333,22 @@
           <div class="collapse navbar-collapse bg-black" id="navbar">
             <ul class="navbar-nav text-center d-flex align-items-center ms-auto">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">INICIO</a>
+                <a class="nav-link" aria-current="page" href="../../index.html">INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/quienes somos/quienesSomos.html">¿QUIÉNES SOMOS?</a>
+                <a class="nav-link" href="../quienesSomos/quienesSomos.html">¿QUIÉNES SOMOS?</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/mecanicos/mecanicos.html">MECÁNICOS</a>
+                <a class="nav-link" href="../mecanicos/mecanicos.html">MECÁNICOS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/contacto/contacto.html">CONTACTO</a>
+                <a class="nav-link" href="../contacto/contacto.html">CONTACTO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/busquedas/busquedas.html">BÚSQUEDAS</a>
+                <a class="nav-link" href="#">BÚSQUEDAS</a>
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
@@ -193,6 +371,7 @@
                 <option value="marca">Marca</option>
                 <option value="modelo">Modelo</option>
                 <option value="annio">Año</option>
+                <option value="manufacturador">Información manufacturador</option>
               </select>
             </div>
             <div class="barra-busqueda mt-4">
@@ -202,7 +381,7 @@
                 <input id="search-id-modelo" type="text" class="input-search" name="search-id" placeholder="Escriba el modelo"/>
               </div>
               <div class="barra-busqueda-modelo mt-4">
-                <input id="search-id-annio" type="text" class="input-search" name="search-id" placeholder="Escriba el año"/>
+                <input id="search-id-annio" type="number" class="input-search" name="search-id" placeholder="Escriba el año"/>
               </div>
               <div class="container-fluid d-flex justify-content-center">
                 <button type="submit" class="btn btn-search d-flex align-items-center justify-content-center mt-5" id="enviarInformacion">
@@ -214,58 +393,39 @@
             </div>  
         </div>
       </div>
-      <div class="tabla">
-        <table class="default">
+      <div class="" id="tablas">
+        
+        <div class="container-tabla d-flex justify-content-center">
+          <div class="tabla" id="tabla-marca">
+            <table class="table table-striped" id = "informacion-tabla-marca">
+              
 
-          <tr>
-        
-            <th scope="row"> ID Modelo de Vehículo </th>
+            </table>   
+          </div>
+        </div>
+        <div class="container-tabla d-flex justify-content-center">
+          <div class="tabla" id="tabla-modelo">
+            <table class="table table-hover" id = "informacion-tabla-modelo">
+              
+            </table>   
+          </div>
+        </div>
+        <div class="container-tabla d-flex justify-content-center">
+          <div class="tabla" id="tabla-annio">
+            <table class="table table-striped" id = "informacion-tabla-annio">
+              
 
-            <th> Marca </th>
-        
-            <th> Nombre modelo </th>
-        
-            <th> Año </th>
-        
-          </tr>
-
-          <tr>
-
-            <th> a </th>
-        
-            <td></td>
-        
-            <td></td>
-        
-            <td></td>
-        
-          </tr>
-        
-          <tr>
-        
-            <th> a </th>
-        
-            <td> </td>
-        
-            <td> </td>
-        
-            <td> </td>
-        
-          </tr>
-        
-          <tr>
-        
-            <th> a </th>
-        
-            <td> </td>
-        
-            <td> </td>
-        
-            <td> </td>
-        
-          </tr>
-        
-        </table>   
+            </table>   
+          </div>
+        </div>
+        <div class="container-tabla d-flex justify-content-center">
+          <div class="tabla" id="tabla-manufactura">
+            <table class="table table-striped" id = "informacion-tabla-manufactura">
+              
+              
+            </table>   
+          </div>
+        </div>
       </div>
     </section>
     <!-- /FORM BUSQUEDA -->
@@ -274,16 +434,16 @@
       <div class="container-fluid container-footer">
         <div class="row information">
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="#">¿Quiénes somos?</a>
+            <a href="../quienesSomos/quienesSomos.html">¿Quiénes somos?</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="#">Mecánicos</a>
+            <a href="../mecanicos/mecanicos.html">Mecánicos</a>
           </div>
           <div class="col-12 col-lg-1 text-center  mt-5">
             <a href="#">Trabajos realizados</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="#">Contacto</a>
+            <a href="../contacto/contacto.html">Contacto</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Términos y condiciones</a>
