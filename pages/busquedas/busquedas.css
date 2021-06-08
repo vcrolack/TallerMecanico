@@ -52,9 +52,51 @@ body {
 -moz-box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
 }
 
+#main {
+  margin-top: 100px;
+}
+.titulo .resalte-titulo {
+  color: #FFBC0A;
+  font-size: 4.5rem;
+}
+#main .carousel-inner img {
+  max-height: 50vh;
+  object-fit: cover;
+  filter: grayscale(70%);
+}
+#carousel {
+  position: relative;
+}
+#carousel .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+#carousel .overlay .container, #carousel .overlay .row {
+  height: 100%; 
+}
+.container-parrafo-explicativo {
+  margin-top: 50px;
+}
+.container-parrafo-explicativo p {
+  font-size: 1.8rem;
+  text-align: justify;
+  color: #CACACA;
+}
+.container-parrafo-explicativo p a {
+  color: #FFBC0A !important;
+  font-size: 1.8rem;
+  margin-right: 13px;
+  text-decoration: none;
+}
+
 .main-input .container-busqueda {
   background-color: #282623;
-  margin-top: 200px;
+  margin-top: 50px;
   border-radius: 10px;
 }
 .main-input .input-search {
@@ -63,7 +105,7 @@ body {
   border: none;
   outline: none;
   height: 50px;
-  width: 20vw;
+  width: 50vw;
   font-size: 2rem;
   box-shadow: 1px 1px 27px 0px rgba(255,188,10,0.75);
 -webkit-box-shadow: 1px 1px 27px 0px rgba(255,188,10,0.75);
@@ -85,6 +127,10 @@ body {
 }
 #search-id {
   size: 32px;
+}
+.seleccionar-categoria select {
+  height: 50px;
+  font-size: 1.5rem;
 }
 .tabla { 
   width: 100vw;
