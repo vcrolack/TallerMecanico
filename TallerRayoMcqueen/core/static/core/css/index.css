@@ -105,13 +105,13 @@ body {
   object-fit: cover;
 }
 .carousel-control-prev-icon {
-  background-image: url('./assets/flecha-prev.svg') !important;
-height: 100px;
-width: 100px;
+  background-image: url('../img/icon/flecha-prev.svg') !important;
+  height: 100px;
+  width: 100px;
 
 }
 .carousel-control-next-icon {
-  background-image: url('./assets/flecha-next.svg');
+  background-image: url('../img/icon/flecha-next.svg');
   height: 100px;
   width: 100px;
 }

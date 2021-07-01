@@ -74,7 +74,7 @@
   <header>
     <nav id="header"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
-          <a href=""><img src="../../assets/img/icon/logo-solido.svg" alt="" class=" logo"></a>
+          <a href=""><img src="{% static 'core/img/icon/logo-solido.svg' %}" alt="" class=" logo"></a>
           <a class="navbar-brand" href="#">
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
@@ -121,7 +121,8 @@
               </div>
               <div class="container-fluid d-flex justify-content-center">
                 <button type="submit" class="btn btn-search d-flex align-items-center justify-content-center mt-5">
-                  <img src="./assets/img/icon/search-icon.svg" class="search-icon"/> Buscar
+                  {% load static %}
+                  <img src="{% static 'core/img/icon/search-icon.svg' %}" class="search-icon"/> Buscar
                 </button>
 
               </div>
@@ -184,11 +185,11 @@
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span class="visual ly-hidden"></span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span class="visually-hidden"></span>
         </button>
       </div>
       
