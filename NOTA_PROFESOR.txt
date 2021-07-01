@@ -1,0 +1,6 @@
+Hola, profesor. Le dejamos esta nota para avisar
+que para que el clima cargue en index.html, deberá
+instalar una extensión de CORS. Adjunto el link por
+cualquier cosa. Saludos, profe!! 
+
+https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf
