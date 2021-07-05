@@ -1,8 +1,18 @@
+from .models import TrabajoRealizado
 from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-  return render(request, 'core/index.html')
+
+  trabajos_realizados = TrabajoRealizado.objects.select_related('mecanico').all().query
+
+  print(trabajos_realizados)
+  
+  contexto = {
+    'trabajos_realizados': trabajos_realizados,
+  }
+
+  return render(request, 'core/index.html', contexto)
 
 def quienes_somos(request):
   return render(request, 'core/quienesSomos.html')
@@ -15,3 +25,10 @@ def contacto(request):
 
 def mecanicos(request):
   return render(request, 'core/mecanicos.html')
+
+def trabajo(request, id):
+  trabajo_realizado = TrabajoRealizado.objects.get(id_trabajo = id)
+  contexto = {
+    'trabajo_realizado': trabajo_realizado,
+  }
+  return render(request, 'core/trabajosDestacados/trabajo{}.html'.format(id), contexto)

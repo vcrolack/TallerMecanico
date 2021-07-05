@@ -142,16 +142,18 @@
     <main id="main">
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-pause= "hover">
         <div class="carousel-inner">
+          
           <div class="carousel-item active">
             <img src="./assets/img/carrusel/foto1.jpg" class="" alt="...">
             <div class="container mt-5">
               <div class="row">
                 <div class="col-12 col-lg container-informacion-trabajo">
                   
-                  <p>Tipo de trabajo: Cambio de radiador</p>
-                  <p>Mecánico: Tomás Faúndez</p>
+                  <p>Tipo de trabajo: {{trabajos_realizados.0.core_trabajorealizado.0.tipo_trabajo}}</p>
+                  <p>Mecánico: {{trabajos_realizados.0.mecanico}} 
+                    {{trabajos_realizados.0.apellido}}</p>
                   <p>Vehículo: Mazda 4</p>
-                  <button class="btn btn-mas-info">Más información</button>
+                  <a href="{% url 'trabajo' id=1%}" class="btn btn-mas-info">Más información</a>
                 </div>
               </div>
             </div>
@@ -164,7 +166,7 @@
                   <p>Tipo de trabajo: Cambio de pistónes</p>
                   <p>Mecánico: Oscar Martínez</p>
                   <p>Vehículo: Toyota Yaris</p>
-                  <button class="btn btn-mas-info">Más información</button>
+                  <a href="{% url 'trabajo' id=2%}" class="btn btn-mas-info">Más información</a>
                 </div>
               </div>
             </div>
@@ -177,7 +179,7 @@
                   <p>Tipo de trabajo: Lubricación</p>
                   <p>Mecánico: Jorge Moforte</p>
                   <p>Vehículo: Kía Río</p>
-                  <button class="btn btn-mas-info">Más información</button>
+                  <a href="{% url 'trabajo' id=3%}" class="btn btn-mas-info">Más información</a>
                 </div>
               </div>
             </div>
