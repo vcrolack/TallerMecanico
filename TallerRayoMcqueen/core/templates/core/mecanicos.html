@@ -7,7 +7,10 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="./mecanicos.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/mecanicos.css' %}">
+    <link  rel="icon"   href="{% static 'core/img/icon/logo.svg' %}" type="imge/svg" />
+
     <title>Mecánicos</title>
   </head>
   <body>
@@ -15,20 +18,24 @@
     <header>
       <nav id="header"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
-          <a href="../../index.html"><img src="../../assets/img/icon/logo-solido.svg" alt="" class=" logo"></a>
-          <a class="navbar-brand" href="../../index.html">
+          <a href="{% url 'home' %}">
+            {% load static %}
+            <img src="{% static 'core/img/icon/logo-solido.svg' %}" alt="" class=" logo">
+          </a>
+          <a class="navbar-brand" href="{% url 'home' %}">
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
           <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="../../assets/toggle-button.svg" ></img>
+            {%load static %}
+            <img src="{% static 'core/img/icon/toggle-button.svg' %}" ></img>
           </button>
           <div class="collapse navbar-collapse bg-black" id="navbar">
             <ul class="navbar-nav text-center d-flex align-items-center ms-auto">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../../index.html">INICIO</a>
-              </li>
+                <a class="nav-link" aria-current="page" href="{%url 'home' %}">INICIO</a>
+              </li> 
               <li class="nav-item">
-                <a class="nav-link" href="../quienes somos/quienesSomos.html">¿QUIÉNES SOMOS?</a>
+                <a class="nav-link" href="{% url 'quienes_somos' %}">¿QUIÉNES SOMOS?</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">MECÁNICOS</a>
@@ -37,7 +44,7 @@
                 <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../contacto/contacto.html">CONTACTO</a>
+                <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
@@ -54,7 +61,7 @@
       <div id="carousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../../assets/img/nuestrosMecanicos.jpg" class="d-block w-100" alt="Hawaii 1">
+            <img src="{{imagen.imagen.url}}" class="d-block w-100" alt="Hawaii 1">
           </div>
           <div class="overlay">
             <div class="container">
@@ -80,74 +87,73 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-md-6 mt-5" >
           <div class="col-md-4 mb-4">
             <div class="card tarjeta bg-black">
-              <img class="card-img-top" src="../../assets/img/profile/AndyPrueba.jpg" alt="Card image cap">
+              <img class="card-img-top" src="{{mecanicos.0.foto_mecanico.url}}" alt="Card image cap">
               <div class="card-body">
                 <div class="badges">
-                  <span class="badge especialidad bg-electricista">Electricista</span>
+                  <span class="badge especialidad bg-electricista">{{mecanicos.0.especialidad}}</span>
                 </div>
-                <h3 class="card-title ">Jean Dimter</h3>
-                <p class="card-text">Jean es quien revisa, repara o cambia todos los componentes del sistema eléctrico de tu vehículo, desde lo más sencillo como un foco hasta uno de los alternadores. </p>
+                <h3 class="card-title ">{{mecanicos.0.nombre_mecanico}} {{mecanicos.0.apellido_mecanico}}</h3>
+                <p class="card-text">{{mecanicos.0.descripcion_mecanico}}</p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-4">
             <div class="card tarjeta bg-black">
-              <img class="card-img-top" src="../../assets/img/profile/David.jpg" alt="Card image cap">
+              <img class="card-img-top" src="{{mecanicos.1.foto_mecanico.url}}" alt="Card image cap">
               <div class="card-body">
                 <div class="badges">
-                  <span class="badge especialidad bg-vidreria">Vidrería</span>
+                  <span class="badge especialidad bg-vidreria">{{mecanicos.1.especialidad}}</span>
                 </div>
-                <h3 class="card-title ">David Luzuriaga</h3>
-                <p class="card-text">David se especializa en todo lo que incumba vidrios, desde los más dañados hasta cambios estéticos de los mismos. Y si tan solo tienes una raya que afecta en la estética, Horacio lo pule para ti. </p>
+                <h3 class="card-title ">{{mecanicos.1.nombre_mecanico}} {{mecanicos.1.apellido_mecanico}}</h3>
+                <p class="card-text">{{mecanicos.1.descripcion_mecanico}}</p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-4">
             <div class="card tarjeta bg-black">
-              <img class="card-img-top" src="../../assets/img/profile/Jorge.jpg" alt="Card image cap">
+              <img class="card-img-top" src="{{mecanicos.2.foto_mecanico.url}}" alt="Card image cap">
               <div class="card-body">
                 <div class="badges">
-                  <span class="badge especialidad bg-vestidura">Vestidura</span>
+                  <span class="badge especialidad bg-vestidura">{{mecanicos.2.especialidad}}</span>
                 </div>
-                <h3 class="card-title ">Jorge Moforte</h3>
-                <p class="card-text">Jorge tiene un gran sentido de la estética de tu vehículo, por lo que si quieres cambiar el color de tu vehículo o embellecer el interior del mismo, este grandioso mecánico es lo que buscas.</p>
+                <h3 class="card-title ">{{mecanicos.2.nombre_mecanico}} {{mecanicos.2.apellido_mecanico}}</h3>
+                <p class="card-text">{{mecanicos.2.descripcion_mecanico}}</p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-4">
             <div class="card tarjeta bg-black">
-              <img class="card-img-top" src="../../assets/img/profile/pruebaTomas.jpg" alt="Card image cap">
+              <img class="card-img-top" src="{{mecanicos.3.foto_mecanico.url}}" alt="Card image cap">
               <div class="card-body">
                 <div class="badges">
-                  <span class="badge especialidad bg-llantas">Llantas</span>
+                  <span class="badge especialidad bg-llantas">{{mecanicos.3.especialidad}}</span>
                 </div>
-                <h3 class="card-title ">Tomás Faúndez</h3>
-                <p class="card-text">Tomás es todo un erudito en lo que neumáticos se refiere, por lo que él encantado te asesorará a escoger neumáticos y equiparlos en tu auto.</p>
+                <h3 class="card-title ">{{mecanicos.3.nombre_mecanico}} {{mecanicos.3.apellido_mecanico}}</h3>
+                <p class="card-text">{{mecanicos.3.descripcion_mecanico}}</p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-4">
             <div class="card tarjeta bg-black">
-              <img class="card-img-top" src="../../assets/img/profile/Antonia.jpg" alt="Card image cap">
+              <img class="card-img-top" src="{{mecanicos.4.foto_mecanico.url}}" alt="Card image cap">
               <div class="card-body">
                 <div class="badges">
-                  <span class="badge especialidad bg-escaner">Escáner</span>
+                  <span class="badge especialidad bg-escaner">{{mecanicos.4.especialidad}}</span>
                 </div>
-                <h3 class="card-title ">Antonia Romero</h3>
-                <p class="card-text">Antonia se centra en el software del auto, por lo que si tienes problemas con el sistema operativo o si necesitas que escaneen tu carro, detén tu búsqueda porque has hallado la solución</p>
+                <h3 class="card-title ">{{mecanicos.4.nombre_mecanico}} {{mecanicos.4.apellido_mecanico}}</h3>
+                <p class="card-text">{{mecanicos.4.descripcion_mecanico}}</p>
               </div>
             </div>
           </div>
           <div class="col-md-4 mb-4">
             <div class="card tarjeta bg-black">
-              <img class="card-img-top" src="../../assets/img/profile/Pamela.jpg" alt="Card image cap">
+              <img class="card-img-top" src="{{mecanicos.5.foto_mecanico.url}}" alt="Card image cap">
               <div class="card-body">
                 <div class="badges">
-                  <span class="badge especialidad bg-llantas">Llantas</span>
+                  <span class="badge especialidad bg-llantas">{{mecanicos.5.especialidad}}</span>
                 </div>
-                <h3 class="card-title ">Cristina Fernández</h3>
-                <p class="card-text">Cristina es una experta en la mantención de hidráulicos, alineación y balanceo de tu vehículo. Si no encuentras solución en otros centros, es porque Pamela la tiene.</p>
-              </div>
+                <h3 class="card-title ">{{mecanicos.5.nombre_mecanico}}  {{mecanicos.5.apellido_mecanico}}</h3>
+                <p class="card-text">{{mecanicos.5.descripcion_mecanico}}
             </div>
           </div>
         </div>
@@ -155,44 +161,35 @@
       </div>
     </section>
     <!-- /MECANICOS -->
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- FOOTER -->
-        <footer id="footer">
-          <div class="container-fluid container-footer">
-            <div class="row information">
-              <div class="col-12 col-lg-1 text-center mt-5">
-                <a href="#">¿Quiénes somos?</a>
-              </div>
-              <div class="col-12 col-lg-1 text-center mt-5">
-                <a href="#">Mecánicos</a>
-              </div>
-              <div class="col-12 col-lg-1 text-center  mt-5">
-                <a href="#">Trabajos realizados</a>
-              </div>
-              <div class="col-12 col-lg-1 text-center mt-5">
-                <a href="#">Contacto</a>
-              </div>
-              <div class="col-12 col-lg-1 text-center mt-5">
-                <a href="#">Términos y condiciones</a>
-              </div>
-              <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
-                <a href="" class=""><img src="/assets/img/icon/logo.svg" class="logo-inferior"alt=""></a>
-              </div>
-            </div>
+    <!-- FOOTER -->
+    <footer id="footer">
+      <div class="container-fluid container-footer">
+        <div class="row information">
+          <div class="col-12 col-lg-1 text-center mt-5">
+            <a href="{% url 'quienes_somos'}">¿Quiénes somos?</a>
           </div>
-          <div class="container-fluid foot"></div>
-        </footer>
+          <div class="col-12 col-lg-1 text-center mt-5">
+            <a href="#">Mecánicos</a>
+          </div>
+          <div class="col-12 col-lg-1 text-center  mt-5">
+            <a href="#">Trabajos realizados</a>
+          </div>
+          <div class="col-12 col-lg-1 text-center mt-5">
+            <a href="{% url 'contacto' %}">Contacto</a>
+          </div>
+          <div class="col-12 col-lg-1 text-center mt-5">
+            <a href="#">Términos y condiciones</a>
+          </div>
+          <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
+            <a href="" class="">
+              {% load static %}
+              <img src="{% static 'core/img/icon/logo.svg' %}" class="logo-inferior"alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid foot"></div>
+    </footer>
         <!-- /FOOTER -->
     <!-- Optional JavaScript; choose one of the two! -->
 

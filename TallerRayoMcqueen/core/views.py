@@ -32,7 +32,13 @@ def contacto(request):
   return render(request, 'core/contacto.html')
 
 def mecanicos(request):
-  return render(request, 'core/mecanicos.html')
+  mecanicos = Mecanico.objects.all()
+  imagen_hero = Imagen.objects.get(id_imagen = 2)
+  contexto = {
+    'imagen':imagen_hero,
+    'mecanicos': mecanicos
+  }
+  return render(request, 'core/mecanicos.html', contexto)
 
 def trabajo(request, id):
   trabajo_realizado = TrabajoRealizado.objects.get(id_trabajo = id)
