@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+    <link  rel="icon"   href="{% static 'core/img/icon/logo.svg' %}" type="imge/svg" />
     <script>
       $(document).ready(
         function () {
@@ -79,7 +80,7 @@
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
           <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="../../assets/toggle-button.svg" ></img>
+            <img src="{% static 'core/img/icon/toggle-button.svg' %}" ></img>
           </button>
           <div class="collapse navbar-collapse bg-black" id="navbar">
             <ul class="navbar-nav text-center d-flex align-items-center ms-auto">
@@ -87,19 +88,19 @@
                 <a class="nav-link" aria-current="page" href="#">INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/quienessomos/quienesSomos.html">¿QUIÉNES SOMOS?</a>
+                <a class="nav-link" href="{% url 'quienes_somos' %}">¿QUIÉNES SOMOS?</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/mecanicos/mecanicos.html">MECÁNICOS</a>
+                <a class="nav-link" href="{% url 'mecanicos' %}">MECÁNICOS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/contacto/contacto.html">CONTACTO</a>
+                <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/busquedas/busquedas.html">BÚSQUEDAS</a>
+                <a class="nav-link" href="{% url 'busquedas' %}">BÚSQUEDAS</a>
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
@@ -144,40 +145,40 @@
         <div class="carousel-inner">
           
           <div class="carousel-item active">
-            <img src="./assets/img/carrusel/foto1.jpg" class="" alt="...">
+            <img src="{{trabajos_realizados.0.foto_trabajo.url}}" class="" alt="...">
             <div class="container mt-5">
               <div class="row">
                 <div class="col-12 col-lg container-informacion-trabajo">
                   
-                  <p>Tipo de trabajo: {{trabajos_realizados.0.core_trabajorealizado.0.tipo_trabajo}}</p>
+                  <p>Tipo de trabajo: {{trabajos_realizados.0.tipo_trabajo}}</p>
                   <p>Mecánico: {{trabajos_realizados.0.mecanico}} 
-                    {{trabajos_realizados.0.apellido}}</p>
-                  <p>Vehículo: Mazda 4</p>
+                    {{mecanicos.3.apellido_mecanico}}</p>
+                  <p>Vehículo: {{trabajos_realizados.0.vehiculo}}</p>
                   <a href="{% url 'trabajo' id=1%}" class="btn btn-mas-info">Más información</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./assets/img/carrusel/foto2.jpg" class="" alt="...">
+            <img src="{{trabajos_realizados.1.foto_trabajo.url}}" class="" alt="...">
             <div class="container mt-5">
               <div class="row">
                 <div class="col-12 col-lg container-informacion-trabajo">
-                  <p>Tipo de trabajo: Cambio de pistónes</p>
-                  <p>Mecánico: Oscar Martínez</p>
-                  <p>Vehículo: Toyota Yaris</p>
+                  <p>Tipo de trabajo: {{trabajos_realizados.0.tipo_trabajo}}</p>
+                  <p>Mecánico: {{trabajos_realizados.1.mecanico}} {{mecanicos.2.apellido_mecanico}}</p>
+                  <p>Vehículo: {{trabajos_realizados.1.vehiculo}}</p>
                   <a href="{% url 'trabajo' id=2%}" class="btn btn-mas-info">Más información</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="./assets/img/carrusel/foto3.jpg" class="" alt="...">
+            <img src="{{trabajos_realizados.2.foto_trabajo.url}}" class="" alt="...">
             <div class="container mt-5">
               <div class="row ">
                 <div class="col-12 col-lg container-informacion-trabajo">
-                  <p>Tipo de trabajo: Lubricación</p>
-                  <p>Mecánico: Jorge Moforte</p>
+                  <p>Tipo de trabajo: {{trabajos_realizados.2.tipo_trabajo}}</p>
+                  <p>Mecánico: {{trabajos_realizados.2.mecanico}} {{mecanicos.1.apellido_mecanico}}</p>
                   <p>Vehículo: Kía Río</p>
                   <a href="{% url 'trabajo' id=3%}" class="btn btn-mas-info">Más información</a>
                 </div>
@@ -202,16 +203,16 @@
       <div class="container-fluid container-footer">
         <div class="row information">
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="#">¿Quiénes somos?</a>
+            <a href="{% url 'quienes_somos' %}">¿Quiénes somos?</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="#">Mecánicos</a>
+            <a href="% url 'mecanicos' %">Mecánicos</a>
           </div>
           <div class="col-12 col-lg-1 text-center  mt-5">
             <a href="#">Trabajos realizados</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="#">Contacto</a>
+            <a href="{% url 'contacto' %}">Contacto</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Términos y condiciones</a>

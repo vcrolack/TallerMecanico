@@ -1,15 +1,17 @@
-from .models import TrabajoRealizado
+from .models import Mecanico, TrabajoRealizado
 from django.shortcuts import render
 
 # Create your views here.
 def index(request):
 
-  trabajos_realizados = TrabajoRealizado.objects.select_related('mecanico').all().query
+  trabajos_realizados = TrabajoRealizado.objects.all()
+  mecanicos = Mecanico.objects.all()
 
   print(trabajos_realizados)
   
   contexto = {
     'trabajos_realizados': trabajos_realizados,
+    'mecanicos': mecanicos,
   }
 
   return render(request, 'core/index.html', contexto)
