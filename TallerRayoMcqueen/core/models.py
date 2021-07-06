@@ -143,3 +143,50 @@ class TrabajoRealizado(models.Model):
     return self.tipo_trabajo
 
 
+class Imagen(models.Model):
+
+  id_imagen = models.IntegerField(
+    primary_key = True,
+    verbose_name = "Id imagen",
+    null = False,
+    blank = False
+  )
+
+  nombre_imagen = models.CharField(
+    max_length = 20,
+    null = False,
+    blank = False,
+    verbose_name = "Imagen"
+  )
+
+  imagen = models.ImageField(upload_to = "imagenesDB")
+
+  def __str__(self):
+    return self.nombre_imagen
+
+class Servicio(models.Model):
+
+  id_servicio = models.IntegerField(
+    primary_key = True,
+    verbose_name = "Id servicio",
+    null = False,
+    blank = False
+  )
+
+  nombre_servicio = models.CharField(
+    max_length = 50,
+    verbose_name = "Nombre servicio",
+    null = False,
+    blank = False
+  )
+
+  descripcion_servicio = models.CharField(
+    max_length = 500,
+    verbose_name = "Nombre servicio",
+    null = False,
+    blank = False
+  )
+
+  def __str__(self):
+    return self.nombre_servicio
+

@@ -10,6 +10,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'core/css/quienesSomos.css' %}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link  rel="icon"   href="{% static 'core/img/icon/logo.svg' %}" type="imge/svg" />
     <title>¿Quiénes somos?</title>
   </head>
   <body>
@@ -17,29 +18,32 @@
     <header>
       <nav id="header"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
-          <a href="../../index.html"><img src="../../assets/img/icon/logo-solido.svg" alt="" class=" logo"></a>
-          <a class="navbar-brand" href="../../index.html">
+          <a href="{% url 'home' %}">
+            {%load static %}
+            <img src="{% static 'core/img/icon/logo-solido.svg' %}" alt="" class=" logo">
+          </a>
+          <a class="navbar-brand" href="{% url 'home' %}">
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
           <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="../../assets/toggle-button.svg" ></img>
+            <img src="{% static 'core/img/icon/toggle-button.svg' %}" ></img>
           </button>
           <div class="collapse navbar-collapse bg-black" id="navbar">
             <ul class="navbar-nav text-center d-flex align-items-center ms-auto">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../../index.html">INICIO</a>
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}">INICIO</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">¿QUIÉNES SOMOS?</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../mecanicos/mecanicos.html">MECÁNICOS</a>
+                <a class="nav-link" href="{% url 'mecanicos' %}">MECÁNICOS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../contacto/contacto.html">CONTACTO</a>
+                <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
@@ -56,7 +60,7 @@
       <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner carrusel">
           <div class="carousel-item active ">
-            <img src="../../assets/img/quienesSomos.jpg" class="\" alt="..."/>
+            <img src="{{imagen.imagen.url}}" class="\" alt="..."/>
           </div>
           <div class="overlay">
             <div class="container d-flex justify-content-end">
@@ -84,25 +88,27 @@
           <div class="col-md-4  offset-lg-1 mb-4 d-flex justify-content-center container-tarjeta">
             <div class="card tarjeta tarjeta-shadow-left">
               <div class="container-icon my-5 ">
-                <img src="../../assets/img/icon/herramientas.svg" class="card-img-top" alt="...">
+                {% load static %}
+                <img src="{% static 'core/img/icon/quienesSomos/herramientas.svg' %}" class="card-img-top" alt="...">
               </div>
-              <h2 class="titulo-tarjetas text-center">Mecánica<br></br></h2>
+              <h2 class="titulo-tarjetas text-center">{{servicios.0.nombre_servicio}}</h2>
               <div class="card-body d-flex justify-content-center">
                 <div class="container-informacion d-flex justify-content-center">
-                  <p class="card-text">El correcto funcionamiento de tu vehículo es nuestro objetivo, por lo que contamos con una gran variedad de servicios en mecánica express, general y mayor van desde alineación de ruedas hasta reparaciones de motor.</p>
+                  <p class="card-text">{{servicios.0.descripcion_servicio}}</p>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-4 offset-lg-1 mb-4 d-flex justify-content-center container-tarjeta">
             <div class="card tarjeta tarjeta-shadow-center">
-              <div class="container-icon my-5">
-                <img src="../../assets/img/icon/auto.svg" class="card-img-top" alt="...">
+              <div class="container-icon my-5" style="padding-right: 55px;">
+                {% load static}
+                <img src="{% static 'core/img/icon/quienesSomos/auto.svg' %}" class="card-img-top" alt="...">
               </div>
-              <h2 class="titulo-tarjetas text-center">Estética <br>automotriz</br></h2>
+              <h2 class="titulo-tarjetas text-center">{{servicios.1.nombre_servicio}}</br></h2>
               <div class="card-body d-flex justify-content-center">
                 <div class="container-informacion d-flex justify-content-center">
-                  <p class="card-text">Un automóvil con buen rendimiento y un correcto funcionamiento es bueno, pero que tenga una excelente imagen es mucho mejor. En <strong>El Rayo McQueen</strong> nos encargamos del lavado de interiores y exteriores, pulido y encerado y hasta lavado de motor.</p>
+                  <p class="card-text">{{servicios.1.descripcion_servicio}}</p>
                 </div>
               </div>
             </div>
@@ -110,12 +116,13 @@
           <div class="col-md-4 offset-lg-1 mb-4 d-flex justify-content-center container-tarjeta">
             <div class="card tarjeta tarjeta-shadow-right">
               <div class="container-icon my-5">
-                <img src="../../assets/img/icon/rayo.svg" class="card-img-top" alt="...">
+                {% load static %}
+                <img src="{% static 'core/img/icon/quienesSomos/rayo.svg' %}" class="card-img-top" alt="...">
               </div>
-              <h2 class="titulo-tarjetas text-center">Electricidad <br> automotriz</br></h2>
+              <h2 class="titulo-tarjetas text-center">{{servicios.2.nombre_servicio}}</br></h2>
               <div class="card-body d-flex justify-content-center">
                 <div class="container-informacion d-flex justify-content-center"> 
-                    <p class="card-text">Es de sumamente importancia que el sistema eléctrico de tu vehículo esté siempre en buen estado, por eso, nos ocupamos de diagnosticar fallos y hacer reemplazo de las partes necesarias para que tu auto funcione a su mejor nivel.</p>
+                    <p class="card-text">{{servicios.2.descripcion_servicio}}</p>
                 </div>
               </div>
             </div>  
@@ -144,7 +151,8 @@
             <a href="#">Términos y condiciones</a>
           </div>
           <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
-            <a href="" class=""><img src="/assets/img/icon/logo.svg" class="logo-inferior"alt=""></a>
+            {% load static %}
+            <a href="" class=""><img src="{% static 'core/img/icon/logo.svg' %}" class="logo-inferior"alt=""></a>
           </div>
         </div>
       </div>
