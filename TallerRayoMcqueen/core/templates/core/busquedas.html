@@ -8,7 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./busquedas.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/css/busquedas.css' %}">
+    {% load static %}
+    <link  rel="icon"   href="{% static 'core/img/icon/logo.svg' %}" type="imge/svg" />
     <script>
       $(document).ready(function () {
         $("#msj-error").hide();
@@ -323,29 +326,33 @@
     <header>
       <nav id="header"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container-fluid">
-          <a href=""><img src="../../assets/img/icon/logo-solido.svg" alt="" class=" logo"></a>
-          <a class="navbar-brand" href="#">
+          <a href="{% url 'home' %}">
+            {% load static %}
+            <img src="{% static 'core/img/icon/logo-solido.svg' %}" alt="" class=" logo">
+          </a>
+          <a class="navbar-brand" href="{% url 'home' %}">
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
           <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <img src="../../assets/toggle-button.svg" ></img>
+            {% load static %}
+            <img src="{% static 'core/img/icon/toggle-button.svg' %}" >
           </button>
           <div class="collapse navbar-collapse bg-black" id="navbar">
             <ul class="navbar-nav text-center d-flex align-items-center ms-auto">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="../../index.html">INICIO</a>
+                <a class="nav-link" aria-current="page" href="{% url 'home' %}">INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../quienesSomos/quienesSomos.html">¿QUIÉNES SOMOS?</a>
+                <a class="nav-link" href="{% url 'quienes_somos' %}">¿QUIÉNES SOMOS?</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../mecanicos/mecanicos.html">MECÁNICOS</a>
+                <a class="nav-link" href="{% url 'mecanicos' %}">MECÁNICOS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="../contacto/contacto.html">CONTACTO</a>
+                <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">BÚSQUEDAS</a>
@@ -365,7 +372,7 @@
       <div id="carousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../../assets/img/busquedas.jpg" class="d-block w-100" alt="Hawaii 1">
+            <img src="{{imagen.imagen.url}}" class="d-block w-100" alt="Hawaii 1">
           </div>
           <div class="overlay">
             <div class="container">
@@ -415,7 +422,8 @@
               </div>
               <div class="container-fluid d-flex justify-content-center">
                 <button type="submit" class="btn btn-search d-flex align-items-center justify-content-center mt-5" id="enviarInformacion">
-                  <img src="../../assets/img/icon/search-icon.svg" class="search-icon"/> Buscar
+                  {% load static %}
+                  <img src="{% static 'core/img/icon/busquedas/search-icon.svg' %}" class="search-icon"/> Buscar
                 </button>
               </div>
               <div class="container alert alert-danger" id="msj-error">
@@ -464,22 +472,25 @@
       <div class="container-fluid container-footer">
         <div class="row information">
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="../quienesSomos/quienesSomos.html">¿Quiénes somos?</a>
+            <a href="{% url 'quienes_somos' %}">¿Quiénes somos?</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="../mecanicos/mecanicos.html">Mecánicos</a>
+            <a href="{% url 'mecanicos' %}">Mecánicos</a>
           </div>
           <div class="col-12 col-lg-1 text-center  mt-5">
             <a href="#">Trabajos realizados</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="../contacto/contacto.html">Contacto</a>
+            <a href="{% url 'contacto' %}">Contacto</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Términos y condiciones</a>
           </div>
           <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
-            <a href="" class=""><img src="/assets/img/icon/logo.svg" class="logo-inferior"alt=""></a>
+            <a href="" class="">
+              {% load static %}
+              <img src="{% static 'core/img/icon/logo.svg' %}" class="logo-inferior"alt="">
+            </a>
           </div>
         </div>
       </div>

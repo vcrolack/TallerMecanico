@@ -26,10 +26,19 @@ def quienes_somos(request):
   return render(request, 'core/quienesSomos.html', contexto)
 
 def busquedas(request):
-  return render(request, 'core/busquedas.html')
+  imagen = Imagen.objects.get(id_imagen = 4)
+  contexto = {
+    'imagen': imagen,
+  }
+  return render(request, 'core/busquedas.html', contexto)
 
 def contacto(request):
-  return render(request, 'core/contacto.html')
+  imagen = Imagen.objects.get(id_imagen = 3)
+  contexto = {
+    'imagen': imagen,
+
+  }
+  return render(request, 'core/contacto.html', contexto)
 
 def mecanicos(request):
   mecanicos = Mecanico.objects.all()

@@ -20,7 +20,7 @@
             {% load static %}
             <img src="{% static 'core/img/icon/logo-solido.svg' %}" alt="" class=" logo">
           </a>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{% url 'home' %}">
             <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
           </a>
           <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,19 +32,19 @@
                 <a class="nav-link" aria-current="page" href="#">INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/quienessomos/quienesSomos.html">¿QUIÉNES SOMOS?</a>
+                <a class="nav-link" href="{% url 'quienes_somos' %}">¿QUIÉNES SOMOS?</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/mecanicos/mecanicos.html">MECÁNICOS</a>
+                <a class="nav-link" href="{% url 'mecanicos' %}">MECÁNICOS</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/contacto/contacto.html">CONTACTO</a>
+                <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/busquedas/busquedas.html">BÚSQUEDAS</a>
+                <a class="nav-link" href="{% url 'busquedas' %}">BÚSQUEDAS</a>
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
@@ -72,7 +72,7 @@
                 <li>Detalles: {{trabajo_realizado.mas_informacion}}</li>
               </ul>
               <div class="container container-btn">
-                <a href="" class="btn btn-registrate btn-regresar">Regresar</a>
+                <a href="{% url 'home' %}" class="btn btn-registrate btn-regresar">Regresar</a>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@
       <div class="container-fluid container-footer">
         <div class="row information">
           <div class="col-12 col-lg-1 text-center mt-5">
-            <a href="#">¿Quiénes somos?</a>
+            <a href="{}">¿Quiénes somos?</a>
           </div>
           <div class="col-12 col-lg-1 text-center mt-5">
             <a href="#">Mecánicos</a>
