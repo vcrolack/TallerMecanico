@@ -1,7 +1,9 @@
 from .models import Mecanico, Servicio, TrabajoRealizado, Imagen
+from django.contrib.auth.models import User
 from django.shortcuts import render
-
+from django.contrib.auth import get_user_model
 # Create your views here.
+user = User.objects.all()
 def index(request):
 
   trabajos_realizados = TrabajoRealizado.objects.all()

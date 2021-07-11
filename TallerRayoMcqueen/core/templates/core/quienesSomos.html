@@ -47,8 +47,19 @@
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
-              <a class="btn btn-registrate  me-4" href="">Regístrate</a>
+              {% if user.is_authenticated %}
+              <div class="container-usuario d-flex ">
+                <h1 class="me-3" style=" color: #A7A7A7;">Hola, {{user.username}}</h1>
+                <a class="btn btn-registrate"  href="{% url 'logout_view' %}">SALIR</a>
+
+              </div>
+              {% else %}
+              <a class="btn btn-registrate  me-4" href="{% url 'register_view' %}">Regístrate</a>
               <a class="btn btn-inicie-sesion" href="{% url 'login_view' %}" >Inicie sesión</a>
+              {% endif %}
+              {% if user.is_staff %}
+              <a class="btn btn-inicie-sesion ms-4" href="">ADMIN</a>
+              {% endif %}
             </div>
           </div>
         </div>

@@ -68,6 +68,10 @@ body {
   font-size: 1.6rem;
   color: #A7A7A7;
 }
+.campo {
+  font-size: 1.8rem;
+  width: 100%;
+}
 
 
 .btn-iniciar {
@@ -77,6 +81,11 @@ body {
   height: 50px;
   width: 180px;
   border-radius: 6px;
+}
+
+.lista-errores li {
+  font-size: 1.6rem;
+  list-style: none;
 }
 .lista-termino-condiciones li{
   color: #A7A7A7;

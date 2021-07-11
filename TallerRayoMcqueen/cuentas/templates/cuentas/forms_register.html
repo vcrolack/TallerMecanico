@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{% static 'core/css/forms.css' %}">
   {% load static %}
   <link  rel="icon"   href="{% static 'core/img/icon/logo.svg' %}" type="imge/svg" />
-  <title>Registro</title>
+  <title>Inicia sesión</title>
 </head>
 <body>
   <!-- HEADER -->
@@ -57,7 +57,7 @@
   <!-- FORMULARIO -->
   <section class="main-formulario" id="main">
     <div class="titulo d-flex justify-content-center " >
-      <h1>INICIA SESION</h1>
+      <h1>REGISTRO</h1>
     </div>
     <div class="container container-formulario d-flex justify-content-center align-items-center  mb-5">
       <div class="row">
@@ -70,10 +70,14 @@
               <input type="text" class="form-control campo" required id="exampleInputUser" aria-describedby="emailHelp" name="username">
             </div>
             <div class="mb-3 container-campos">
+              <label for="exampleInputEmail" class="form-label">Correo electrónico</label>
+              <input type="email" required class="form-control campo" id="exampleInputEmail" name="email">
+            </div>
+            <div class="mb-3 container-campos">
               <label for="exampleInputPassword1" class="form-label">Contraseña</label>
               <input type="password" required class="form-control campo" id="exampleInputPassword1" name="password">
-            </div> -->
-            <button type="submit" class="btn btn-iniciar">Inicia sesión</button>
+            </div>
+            <button type="submit" class="btn btn-iniciar">Únete</button>
           </form>
 
         </div>
