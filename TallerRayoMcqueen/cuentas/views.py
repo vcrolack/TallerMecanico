@@ -18,7 +18,7 @@ def login_view(request):
       return redirect("/")
     else:
       request.session['invalid_user'] = 1
-  return render(request, "cuentas/forms.html", {"form": form})
+  return render(request, "cuentas/forms_login.html", {"form": form})
 
 def logout_view(request):
   logout(request)
