@@ -46,7 +46,7 @@
               </li>
             </ul>
             <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
-              <button class="btn btn-registrate  me-4">Regístrate</button>
+              <a class="btn btn-registrate  me-4" href="{% url 'register_view' %}">Regístrate</a>
               <button class="btn btn-inicie-sesion">Inicie sesión</button>
             </div>
           </div>
@@ -64,7 +64,7 @@
         <div class="col-12 col-lg block">
           <form method="POST" action=".">
             {% csrf_token %}
-            <!-- {{form.as_p}} -->
+            
             <div class="mb-3 container-campos">
               <label for="exampleInputUser" class="form-label">Nombre de usuario</label>
               <input type="text" class="form-control campo" required id="exampleInputUser" aria-describedby="emailHelp" name="username">
