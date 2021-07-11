@@ -7,6 +7,8 @@ def index(request):
   trabajos_realizados = TrabajoRealizado.objects.all()
   mecanicos = Mecanico.objects.all()
 
+  mecanic = TrabajoRealizado.objects.select_related('mecanico').all().query
+
   print(trabajos_realizados)
   
   contexto = {

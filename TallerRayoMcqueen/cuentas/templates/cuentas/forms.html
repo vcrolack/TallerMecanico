@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'core/css/forms.css' %}">
+  {% load static %}
+  <link  rel="icon"   href="{% static 'core/img/icon/logo.svg' %}" type="imge/svg" />
+  <title>Inicia sesión</title>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav id="header"class="navbar navbar-personalizado navbar-expand-lg navbar-light  fixed-top">
+        <div class="container-fluid">
+          <a href=""><img src="{% static 'core/img/icon/logo-solido.svg' %}" alt="" class=" logo"></a>
+          <a class="navbar-brand" href="#">
+            <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
+          </a>
+          <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="{% static 'core/img/icon/toggle-button.svg' %}" ></img>
+          </button>
+          <div class="collapse navbar-collapse bg-black" id="navbar">
+            <ul class="navbar-nav text-center d-flex align-items-center ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">INICIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'quienes_somos' %}">¿QUIÉNES SOMOS?</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'mecanicos' %}">MECÁNICOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'busquedas' %}">BÚSQUEDAS</a>
+              </li>
+            </ul>
+            <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
+              <button class="btn btn-registrate  me-4">Regístrate</button>
+              <button class="btn btn-inicie-sesion">Inicie sesión</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- /HEADER -->
+  <!-- FORMULARIO -->
+  <section class="main-formulario" id="main">
+    <div class="titulo d-flex justify-content-center " >
+      <h1>INICIA SESION</h1>
+    </div>
+    <div class="container container-formulario d-flex justify-content-center align-items-center  mb-5">
+      <div class="row">
+        <div class="col-12 col-lg block">
+          <form method="POST" action=".">
+            {% csrf_token %}
+            <div class="mb-3 container-campos">
+              <label for="exampleInputEmail1" class="form-label">Nombre de usuario</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="nombre_usuario">
+            </div>
+            <div class="mb-3 container-campos">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="contrasena">
+            </div>
+            <button type="submit" class="btn btn-iniciar">Inicia sesión</button>
+          </form>
+        </div>
+        <div div class="col-12 col-lg block">
+          <div class="terminos-condiciones">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /FORMULARIO -->
+  <!-- TERMINOS Y CONDICIONES -->
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg">
+        <div class="titulo d-flex justify-content-center " >
+          <h1>TÉRMINOS Y CONDICIONES</h1>
+        </div>
+        <ol class="lista-termino-condiciones">
+          <li>Rayo McQueen no se hace responsable por elementos y/o accesorios dejados en el vehículo que no sean entregados al recepcionista, ni por daños en el vehículo, causados por fuerza mayor, caso fortuito o culpa levísima.</li>
+          <li>Cuando el vehículo sea entregado a Rayo McQueen por personas diferentes a sus propietarios para reparación o prestación de servicio y/o suministro de repuestos, se entenderá que ellos se encuentran debidamente autorizados para tal efecto, conforme a lo dispuesto en el artículo 842 del código de comercio.</li>
+          <li>Rayo McQueen queda facultado para retener el vehículo objeto de esta reparación hasta que los valores causados por la misma sean cancelados en su totalidad. Si después de 3 días de terminada la reparación del vehículo este no es retirado, Rayo McQueen cobrará por concepto de ocupación de puesto de trabajo el valor de 2 salarios mínimos diarios legales vigentes, de igual manera cuando la permanencia del vehículo en Rayo McQueen sea responsabilidad del cliente. Transcurridos 30 días, Rayo McQueen podrá solicitar judicialmente el remate del vehículo objeto de la presente reparación, para que con el producto de la venta se cancelen todos los valores adeudados y demás gastos en que se haya incurrido para lograr la cancelación de la cuenta.</li>
+          <li>Rayo McQueen se reserva el derecho de cobrar trabajos adicionales que resulten una vez empezado el despiece de los conjuntos, aunque no hayan sido solicitados por el cliente.</li>
+          <li>Los plazos de entrega acordados entre el cliente y Rayo McQueen están sujetos a modificación.</li>
+          <li>El cliente autoriza a Rayo McQueen para hacer las reparaciones requeridas empleando los elementos necesarios y sujeto a las presentes condiciones de trabajo.</li>
+          <li>El cliente autoriza en forma expresa a los dependientes de Rayo McQueen para que conduzcan el vehículo por calles públicas, con el solo fin de probarlo o inspeccionarlo.</li>
+          <li>Rayo McQueen no se hace responsable por los daños que sucedan en los vehículos cuyo blindaje no sea original, cuando estos sean consecuencia de dicha circunstancia, como fisuras en cristales por torsión en la carrocería, elevavidrios, sistemas de bloqueo, etc.</li>
+          <li>La descripción de los síntomas o daños reportados por el cliente al momento de la recepción del vehículo, no excluye que al momento de comenzar la reparación presente fallas o defectos mecánicos o de funcionamiento diferentes a los descritos inicialmente por el cliente.</li>
+          <li>Se entiende que al momento de la entrega final del vehículo el cliente ha revisado que su estado corresponda al consignado en el inventario de ingreso. Esto incluye no solamente su aspecto exterior ni de elementos dejados en el vehículo sino de funcionamiento de todos sus accesorios como elevavidrios, bloqueo, alarma, espejos retrovisores, sensores de reversa, etc.</li>
+          <li>Rayo McQueen está autorizado para subcontratar ciertos servicios de mecánica y electricidad que no presta directamente en sus instalaciones.</li>
+          <li>Los trabajos de reparación serán cancelados en su totalidad por el cliente contra-entrega y a satisfacción. Es facultativo del cliente realizar un abono al momento del ingreso del vehículo o en cualquier otro momento a excepción de las reparaciones que superen los $2.000.000 en cuyo caso Rayo McQueen está autorizado a pedir un abono de por lo menos el 50% de dicho valor.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <!-- /TERMINOS Y CONDICIONES -->
+
+
+      <!-- FOOTER -->
+      <footer id="footer">
+        <div class="container-fluid container-footer">
+          <div class="row information">
+            <div class="col-12 col-lg-1 text-center mt-5">
+              <a href="{% url 'quienes_somos' %}">¿Quiénes somos?</a>
+            </div>
+            <div class="col-12 col-lg-1 text-center mt-5">
+              <a href="{% url 'mecanicos' %}">Mecánicos</a>
+            </div>
+            <div class="col-12 col-lg-1 text-center  mt-5">
+              <a href="#">Trabajos realizados</a>
+            </div>
+            <div class="col-12 col-lg-1 text-center mt-5">
+              <a href="{% url 'contacto' %}">Contacto</a>
+            </div>
+            <div class="col-12 col-lg-1 text-center mt-5">
+              <a href="#">Términos y condiciones</a>
+            </div>
+            <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
+              <a href="" class="">
+                {% load static %}
+                <img src="{% static 'core/img/icon/logo.svg' %}" class="logo-inferior"alt="">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid foot"></div>
+      </footer>
+      <!-- /FOOTER -->
+  
+</body>
+</html>
