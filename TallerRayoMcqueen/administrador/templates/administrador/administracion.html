@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <link  rel="icon"   href="{% static 'core/img/icon/logo.svg' %}" type="imge/svg" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'core/css/administracion.css' %}">
+  <title>Administración</title>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <nav id="header"class="navbar navbar-personalizado navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a href="{% url 'home' %}">
+          {% load static %}
+          <img src="{% static 'core/img/icon/logo-solido.svg' %}" alt="" class=" logo">
+        </a>
+        <a class="navbar-brand" href="{% url 'home' %}">
+          <h1 class="me-5">EL RAYO<br>MCQUEEN</br></h1>
+        </a>
+        <button class="navbar-toggler btn-carousel" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          {% load static %}
+          <img src="{% static 'core/img/icon/toggle-button.svg' %}" >
+        </button>
+        <div class="collapse navbar-collapse bg-black" id="navbar">
+          <ul class="navbar-nav text-center d-flex align-items-center ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="{% url 'home' %}">INICIO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'quienes_somos' %}">¿QUIÉNES SOMOS?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'mecanicos' %}">MECÁNICOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">TRABAJOS REALIZADOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'contacto' %}">CONTACTO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">BÚSQUEDAS</a>
+            </li>
+          </ul>
+          <div class="btn-actions mb-5 d-flex justify-content-sm-center justify-content-md-center justify-content-lg-end justify-content-center align-items-end">
+            {% if user.is_authenticated %}
+            <div class="container-usuario d-flex ">
+              <h1 class="me-3" style=" color: #A7A7A7;">Hola, {{user.username}}</h1>
+              <a class="btn btn-registrate"  href="{% url 'logout_view' %}">SALIR</a>
+            </div>
+            {% else %}
+            <a class="btn btn-registrate  me-4" href="{% url 'register_view' %}">Regístrate</a>
+            <a class="btn btn-inicie-sesion" href="{% url 'login_view' %}" >Inicie sesión</a>
+            {% endif %}
+            {% if user.is_staff %}
+            <a class="btn btn-inicie-sesion ms-4" href="">ADMIN</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- /HEADER -->
+  <!-- TABLAS -->
+  <div class="container d-flex" style="margin-top: 140px;">
+    <h1>Vehículos</h1>
+    <a href="{% url 'form_vehiculo_view' %}" class="btn btn-registrate">CREAR</a>
+  </div>
+  <table class="table table-light" style="margin-top: 50px;">
+    <thead>
+      <tr>
+        <th scope="col">Patente</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Año</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for auto in autos %}
+      <tr>
+        <th scope="row">{{auto.patente}}</th>
+        <td>{{auto.marca}}</td>
+        <td>{{auto.modelo}}</td>
+        <td>{{auto.annio}}</td>
+        <td class="acciones"><a href="">editar</a> <a href="">&nbsp;borrar</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div class="container d-flex" style="margin-top: 140px;">
+    <h1>Trabajos realizados</h1>
+    <a href="" class="btn btn-registrate">CREAR</a>
+  </div>
+  <table class="table table-light" style="margin-top: 50px;">
+    <thead>
+      <tr>
+        <th scope="col">Id trabajo</th>
+        <th scope="col">Tipo de trabajo</th>
+        <th scope="col">Mecánico</th>
+        <th scope="col">Vehículo</th>
+        <th scope="col">Detalles</th>
+        <th scope="col">Foto del trabajo</th>
+        <th scope="col">Acciones</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for trabajo_realizado in trabajos_realizados %}
+      <tr>
+        <th scope="row">{{trabajo_realizado.id_trabajo}}</th>
+        <td>{{trabajo_realizado.tipo_trabajo}}</td>
+        <td>{{trabajo_realizado.mecanico}}</td>
+        <td>{{trabajo_realizado.vehiculo}}</td>
+        <td>{{trabajo_realizado.mas_informacion}}</td>
+        <td>{{trabajo_realizado.foto_trabajo}}</td>
+        <td class="acciones"><a href="">editar</a> <a href="">&nbsp;borrar</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- /TABLAS -->
+
+
+
+
+
+
+  !-- FOOTER -->
+  <footer id="footer">
+    <div class="container-fluid container-footer">
+      <div class="row information">
+        <div class="col-12 col-lg-1 text-center mt-5">
+          <a href="{% url 'quienes_somos' %}">¿Quiénes somos?</a>
+        </div>
+        <div class="col-12 col-lg-1 text-center mt-5">
+          <a href="{% url 'mecanicos' %}">Mecánicos</a>
+        </div>
+        <div class="col-12 col-lg-1 text-center  mt-5">
+          <a href="#">Trabajos realizados</a>
+        </div>
+        <div class="col-12 col-lg-1 text-center mt-5">
+          <a href="{% url 'contacto' %}">Contacto</a>
+        </div>
+        <div class="col-12 col-lg-1 text-center mt-5">
+          <a href="#">Términos y condiciones</a>
+        </div>
+        <div class="col-12 text-center col-lg offset-lg-6 mt-3 pe-3">
+          <a href="" class="">
+            {% load static %}
+            <img src="{% static 'core/img/icon/logo.svg' %}" class="logo-inferior"alt="">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid foot"></div>
+  </footer>
+  <!-- /FOOTER -->
+</body>
+</html>

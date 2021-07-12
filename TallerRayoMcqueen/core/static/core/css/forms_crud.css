@@ -1,0 +1,66 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  }
+  html {
+  font-size: 62.5%;
+  
+  }
+body {
+  background-color: #201E1C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main {
+  margin-top: 150px;
+}
+
+.titulo h1 {
+  font-size: 3.5rem;
+  color: #FFBC0A;
+}
+.container-formulario {
+  background-color: #282623;
+  height: 500px;
+  width: 50vw;
+}
+.container-campos label {
+  font-size: 1.6rem;
+  color: #A7A7A7;
+}
+.campo {
+  font-size: 1.8rem;
+  width: 100%;
+}
+
+
+.btn-iniciar {
+  background-color: #FFBC0A !important;
+  font-size: 20px;
+  color: #282623;
+  height: 50px;
+  width: 180px;
+  border-radius: 6px;
+}
+.btn-regresar {
+  background-color: #A7A7A7;
+  font-size: 20px;
+  color: #282623;
+  height: 50px;
+  width: 180px;
+  border-radius: 6px;
+}
+
+.lista-errores li {
+  font-size: 1.6rem;
+  list-style: none;
+}
+.lista-termino-condiciones li{
+  color: #A7A7A7;
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+}
