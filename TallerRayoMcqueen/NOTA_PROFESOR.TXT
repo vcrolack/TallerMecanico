@@ -4,4 +4,6 @@ Les dejaré unos usuarios para logearse por si acaso.
 super user: rolack     password: 141198
 admin: profe_giova     password: giova14
 
+Adjunto el archivo sql con los datos de la DB.
+
 Saludos profe!
