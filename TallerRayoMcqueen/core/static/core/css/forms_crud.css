@@ -36,6 +36,10 @@ body {
   font-size: 1.8rem;
   width: 100%;
 }
+.combobox {
+  width: 100%;
+  font-size: 1.8rem;
+}
 
 
 .btn-iniciar {

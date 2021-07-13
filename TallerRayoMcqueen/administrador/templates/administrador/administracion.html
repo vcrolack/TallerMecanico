@@ -88,14 +88,14 @@
         <td>{{auto.marca}}</td>
         <td>{{auto.modelo}}</td>
         <td>{{auto.annio}}</td>
-        <td class="acciones"><a href="">editar</a> <a href="">&nbsp;borrar</a></td>
+        <td class="acciones"><a href="{% url 'form_mod_vehiculo' auto.patente %}">editar</a> <a href="{% url 'form_del_vehiculo_view' auto.patente %}">&nbsp;borrar</a></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   <div class="container d-flex" style="margin-top: 140px;">
     <h1>Trabajos realizados</h1>
-    <a href="" class="btn btn-registrate">CREAR</a>
+    <a href="{% url 'form_trabajo_realizado_view' %}" class="btn btn-registrate">CREAR</a>
   </div>
   <table class="table table-light" style="margin-top: 50px;">
     <thead>
@@ -119,7 +119,7 @@
         <td>{{trabajo_realizado.vehiculo}}</td>
         <td>{{trabajo_realizado.mas_informacion}}</td>
         <td>{{trabajo_realizado.foto_trabajo}}</td>
-        <td class="acciones"><a href="">editar</a> <a href="">&nbsp;borrar</a></td>
+        <td class="acciones"><a href="{% url 'form_mod_trabajo_realizado_view' trabajo_realizado.id_trabajo %}">editar</a> <a href="{% url 'form_del_trabajo_realizado_view' trabajo_realizado.id_trabajo %}">&nbsp;borrar</a></td>
       </tr>
       {% endfor %}
     </tbody>

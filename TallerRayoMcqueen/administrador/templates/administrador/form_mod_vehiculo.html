@@ -14,31 +14,31 @@
   <!-- FORMULARIO -->
   <section class="main-formulario" id="main">
     <div class="titulo d-flex justify-content-center " >
-      <h1>CREAR VEHICULO</h1>
+      <h1>REGISTRO</h1>
     </div>
     <div class="container container-formulario d-flex justify-content-center align-items-center  mb-5">
       <div class="row">
         <div class="col-12 col-lg block">
-          <form method="POST" action=".">
+          <form method="POST" action="">
             {% csrf_token %}
             <!-- {{form.as_p}} -->
             <div class="mb-3 container-campos">
               <label for="exampleInputUser" class="form-label">Patente</label>
-              <input maxlength="6" type="text" class="form-control campo" required id="exampleInputPatente" aria-describedby="emailHelp" name="patente">
+              <input maxlength="6" type="text" class="form-control campo" required id="exampleInputPatente" aria-describedby="emailHelp" name="patente" value="{{vehiculo.patente}}" readonly>
             </div>
             <div class="mb-3 container-campos">
               <label for="exampleInputEmail" class="form-label">Marca</label>
-              <input type="text" required class="form-control campo" id="exampleInputMara" name="marca">
+              <input type="text" required class="form-control campo" id="exampleInputMara" name="marca" value="{{vehiculo.marca}}">
             </div>
             <div class="mb-3 container-campos">
               <label for="exampleInputPassword1" class="form-label">Modelo</label>
-              <input type="text" required class="form-control campo" id="exampleInputModelo" name="modelo">
+              <input type="text" required class="form-control campo" id="exampleInputModelo" name="modelo" value="{{vehiculo.modelo}}">
             </div>
             <div class="mb-3 container-campos">
               <label for="exampleInputPassword1" class="form-label">Año</label>
-              <input type="number" required class="form-control campo" id="exampleInputAnnio" name="annio">
+              <input type="number" required class="form-control campo" id="exampleInputAnnio" name="annio" value="{{vehiculo.annio}}">
             </div>
-            <button type="submit" class="btn btn-iniciar">Crear</button>
+            <input type="submit" class="btn btn-iniciar" value="Editar">
             <a class="btn btn-regresar" href="{% url 'admin_view' %}">Regresar</a>
           </form>
 

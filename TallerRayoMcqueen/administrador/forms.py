@@ -14,26 +14,11 @@ class VehiculoForm(ModelForm):
     ]
 
 
-
-
-
-
-
-  #patente = forms.CharField(max_length=6)
-  #marca = forms.CharField(max_length=30)
-  #modelo = forms.CharField(max_length=30)
-  #annio = forms.IntegerField()
-
   def clean_patente(self):
     patente = self.cleaned_data.get("patente")
-    qs = Vehiculo.objects.filter(patente__iexact=patente)
-    if patente in non_allowed_patentes:
-      raise forms.ValidationError("Esta patente no está disponible.")
-    if qs.exists():
-      raise forms.ValidationError("Esta patente no está disponible.")
-    non_allowed_patentes.append(patente)
+    cl_patente = patente.upper()
     print(non_allowed_patentes)
-    return patente
+    return cl_patente
 
   def clean_marca_modelo(self):
     marca = self.cleaned_data.get("marca")
@@ -53,3 +38,22 @@ class VehiculoForm(ModelForm):
     if annio < 1900:
       forms.ValidationError("Completa el campo año.")
     return annio
+
+
+class TrabajoRealizadoForm(ModelForm):
+  class Meta:
+    model = TrabajoRealizado
+    fields = [
+      'id_trabajo',
+      'tipo_trabajo',
+      'mecanico',
+      'vehiculo',
+      'mas_informacion',
+      'foto_trabajo',
+    ]
+  
+"""   def clean_id_trabajo(self):
+    id_trabajo = self.cleaned_data.get("id_trabajo")
+    if id_trabajo <= 0:
+      forms.ValidationError("Campo erroneo. Id.")
+    return id_trabajo """
