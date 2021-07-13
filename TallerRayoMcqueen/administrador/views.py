@@ -65,9 +65,11 @@ def form_trabajo_realizado_view(request):
   }
   if request.POST == 'POST':   
     form = TrabajoRealizadoForm(request.POST, request.FILES)
+
     if form.is_valid():
       form.save()
       contexto['mensaje'] = "Trabajo añadido con éxito"
+      redirect('admin_view')
   return render(request, 'administrador/form_trabajo_realizado.html', contexto)
 
 @staff_member_required
