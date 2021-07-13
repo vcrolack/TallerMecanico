@@ -52,6 +52,12 @@ body {
 -moz-box-shadow: 10px 10px 10px 0px rgba(167,167,167,0.61);
 }
 
+.container-titulo {
+  color: #FFBC0A;
+  justify-content: space-around;
+}
+
+
 td, th {
   font-size: 1.7rem;
 }

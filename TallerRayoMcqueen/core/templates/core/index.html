@@ -115,7 +115,7 @@
               <a class="btn btn-inicie-sesion" href="{% url 'login_view' %}" >Inicie sesión</a>
               {% endif %}
               {% if user.is_staff %}
-              <a class="btn btn-inicie-sesion ms-4" href="">ADMIN</a>
+              <a class="btn btn-inicie-sesion ms-4" href="{% url 'admin_view' %}">ADMIN</a>
             {% endif %}
             </div>
           </div>
