@@ -19,17 +19,16 @@
     <div class="container container-formulario d-flex justify-content-center align-items-center  mb-5">
       <div class="row">
         <div class="col-12 col-lg block">
-          <form method="POST" action=".">
+          <form action="." method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3 container-campos">
               <label for="exampleInputUser" class="form-label">Id trabajo</label>
-              <input maxlength="6" type="text" class="form-control campo" required id="exampleInputPatente" aria-describedby="emailHelp" name="id_trabajo">
+              <input maxlength="6" type="number" class="form-control campo" required id="exampleInputIdTrabajo" aria-describedby="emailHelp" name="id_trabajo">
             </div>
             <div class="mb-3 container-campos">
               <label for="exampleInputEmail" class="form-label">Tipo de trabajo</label>
-              <input type="text" required class="form-control campo" id="exampleInputMara" name="tipo_trabajo" value="{{trabajo_realizado.tipo_trabajo}}">
+              <input type="text" required class="form-control campo" id="exampleInputMarca" name="tipo_trabajo"">
             </div>
-
             <div class="mb-3 container-campos">
               <label for="exampleInputPassword1" class="form-label">Mecánico</label>
               <select name="mecanico" required id="id_mecanico" class="combobox" >
@@ -41,7 +40,7 @@
               </select>
             </div>
             <div class="mb-3 container-campos">
-              <label for="exampleInputPassword1" class="form-label">Vehículo</label>
+              <label for="exampleInputVehiculo" class="form-label">Vehículo</label>
               <select name="vehiculo" required id="id_vehiculo" class="combobox"  >
                 <option value="" selected="">---------</option>
                 {% for vehiculo in vehiculos %}
@@ -52,12 +51,12 @@
             </div>
             <div class="mb-3 container-campos">
               <label for="exampleInputPassword1" class="form-label">Más información</label>
-              <input type="text" required class="form-control campo" id="exampleInputAnnio" name="mas_informacion">
+              <input type="text" required class="form-control campo" id="exampleInputMasInformacion" name="mas_informacion">
             </div>
             <div class="mb-3 container-campos">
               <label for="exampleInputPassword1" class="form-label">Foto del trabajo</label>
               <div class="container d-flex">
-                <input type="file" required class="form-control campo" id="exampleInputAnnio" name="foto_trabajo" value="Adjuntar foto" src="{% static 'core/img/icon/search-icon.svg' %}" accept="image/png, .jpeg, .jpg">
+                <input type="file" class="form-control campo" id="exampleInputFoto" name="foto_trabajo"  accept="image/*">
               </div>
             </div>
             <button type="submit" class="btn btn-iniciar">Crear</button>
@@ -79,6 +78,6 @@
     </div>
     {% endif %}
   </section>
-  
+
 </body>
 </html>

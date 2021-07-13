@@ -1,0 +1,7 @@
+Hola, profesor!
+
+Les dejaré unos usuarios para logearse por si acaso.
+super user: rolack     password: 141198
+admin: profe_giova     password: giova14
+
+Saludos profe!

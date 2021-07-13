@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from core.models import Vehiculo, TrabajoRealizado
+from PIL import Image
 
 non_allowed_patentes = []
 class VehiculoForm(ModelForm):
@@ -51,9 +52,3 @@ class TrabajoRealizadoForm(ModelForm):
       'mas_informacion',
       'foto_trabajo',
     ]
-  
-"""   def clean_id_trabajo(self):
-    id_trabajo = self.cleaned_data.get("id_trabajo")
-    if id_trabajo <= 0:
-      forms.ValidationError("Campo erroneo. Id.")
-    return id_trabajo """

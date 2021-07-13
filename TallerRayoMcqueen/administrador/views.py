@@ -2,6 +2,8 @@ from administrador.forms import TrabajoRealizadoForm, VehiculoForm
 from core.models import Mecanico, TrabajoRealizado, Vehiculo
 from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
+from PIL import Image
+from django.core.files.uploadedfile import SimpleUploadedFile
 
 # Create your views here.
 @staff_member_required
@@ -61,8 +63,8 @@ def form_trabajo_realizado_view(request):
     'mecanicos': mecanicos,
     'vehiculos': vehiculos,
   }
-  if request.POST == 'POST':
-    form = TrabajoRealizadoForm(request.POST)
+  if request.POST == 'POST':   
+    form = TrabajoRealizadoForm(request.POST, request.FILES)
     if form.is_valid():
       form.save()
       contexto['mensaje'] = "Trabajo añadido con éxito"

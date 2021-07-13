@@ -20,4 +20,4 @@ urlpatterns = [
   path('form-trabajo-realizado/', form_trabajo_realizado_view, name="form_trabajo_realizado_view"),
   path('form-mod-trabajo-realizado/<id>', form_mod_trabajo_realizado_view, name="form_mod_trabajo_realizado_view"),
   path('form-del-trabajo-realizado/<id>', form_del_trabajo_realizado_view, name="form_del_trabajo_realizado_view")
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
